@@ -16,42 +16,42 @@
 
         <li class="sidebar-item">
             <a href="#" class="sidebar-link">
-                <i class="fas fa-book"></i>
+                <i class="fas fa-image"></i>
                 <span>Manajemen Banner</span>
             </a>
         </li>
 
         <li class="sidebar-item">
             <a href="#" class="sidebar-link">
-                <i class="fas fa-calendar-alt"></i>
+                <i class="fas fa-building"></i>
                 <span>Manajemen Fasilitas</span>
             </a>
         </li>
 
         <li class="sidebar-item">
             <a href="#" class="sidebar-link">
-                <i class="fas fa-calendar-alt"></i>
+                <i class="fas fa-trophy"></i>
                 <span>Manajemen Prestasi</span>
             </a>
         </li>
 
         <li class="sidebar-item">
             <a href="#" class="sidebar-link">
-                <i class="fas fa-calendar-alt"></i>
+                <i class="fas fa-graduation-cap"></i>
                 <span>Manajemen Jurusan</span>
             </a>
         </li>
 
         <li class="sidebar-item">
             <a href="#" class="sidebar-link">
-                <i class="fas fa-calendar-alt"></i>
+                <i class="fas fa-chalkboard-teacher"></i>
                 <span>Tenaga Pendidik</span>
             </a>
         </li>
 
         <li class="sidebar-item">
             <a href="#" class="sidebar-link">
-                <i class="fas fa-chart-bar"></i>
+                <i class="fas fa-images"></i>
                 <span>Manajemen Gallery</span>
             </a>
         </li>
