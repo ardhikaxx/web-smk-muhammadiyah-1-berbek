@@ -9,3 +9,7 @@ Route::get('/', function () {
 Route::get('/profil-sekolah', function () {
     return view('profil');
 })->name('profil');
+
+Route::get('/admin/dashboard', function () {
+    return view('admin.dashboard.index');
+})->name('admin.dashboard');
