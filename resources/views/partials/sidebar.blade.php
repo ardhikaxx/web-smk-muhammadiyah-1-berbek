@@ -23,7 +23,8 @@
         </li>
 
         <li class="sidebar-item">
-            <a href="#" class="sidebar-link">
+            <a href="{{ route('admin.manajemen-fasilitas.index') }}"
+                class="sidebar-link {{ Request::routeIs('admin.manajemen-fasilitas.*') ? 'active' : '' }}">
                 <i class="fas fa-building"></i>
                 <span>Manajemen Fasilitas</span>
             </a>
