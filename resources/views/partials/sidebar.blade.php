@@ -57,6 +57,14 @@
         </li>
 
         <li class="sidebar-item">
+            <a href="{{ route('admin.manajemen-admin.index') }}"
+                class="sidebar-link {{ Request::routeIs('admin.manajemen-admin.*') ? 'active' : '' }}">
+                <i class="fas fa-users-cog"></i>
+                <span>Manajemen Admin</span>
+            </a>
+        </li>
+
+        <li class="sidebar-item">
             <a href="{{ route('admin.settings') }}"
                 class="sidebar-link {{ Request::routeIs('admin.settings') ? 'active' : '' }}">
                 <i class="fas fa-cog"></i>
