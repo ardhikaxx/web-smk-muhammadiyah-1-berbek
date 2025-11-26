@@ -57,9 +57,17 @@
         </li>
 
         <li class="sidebar-item">
-            <a href="#" class="sidebar-link">
+            <a href="{{ route('admin.settings') }}"
+                class="sidebar-link {{ Request::routeIs('admin.settings') ? 'active' : '' }}">
                 <i class="fas fa-cog"></i>
                 <span>Pengaturan</span>
+            </a>
+        </li>
+
+        <li class="sidebar-item logout-item">
+            <a href="#" class="sidebar-link text-danger" onclick="confirmLogout()">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
             </a>
         </li>
     </ul>

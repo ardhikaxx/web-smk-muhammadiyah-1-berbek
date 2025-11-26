@@ -427,3 +427,92 @@ body {
 .fade-in {
     animation: fadeIn 0.5s ease-out;
 }
+
+.profile-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profile-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-btn i {
+    color: var(--primary);
+}
+
+.name-header {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.sidebar-item.logout-item {
+    margin-top: auto;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 10px;
+}
+
+.sidebar-item.logout-item .sidebar-link {
+    color: #dd3333 !important;
+    background: #ffff;
+    padding: 20px;
+    border-radius: 20px;
+    margin-left: 16px;
+    margin-right: 16px;
+    font-weight: 800;
+    border: none;
+}
+
+.sidebar-item.logout-item .sidebar-link:hover {
+    background: #dd3333;
+    color: #ffff !important;
+    border: none;
+}
+
+.profile-info {
+    background: #f8f9fa;
+    margin: -10px 0 5px 0;
+}
+
+.swal2-popup {
+    border-radius: var(--border-radius) !important;
+}
+
+.swal2-confirm {
+    border-radius: 8px !important;
+}
+
+.swal2-cancel {
+    border-radius: 8px !important;
+}
+
+@media (max-width: 767.98px) {
+    .profile-btn span {
+        display: none !important;
+    }
+}
+
+.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.profile-menu {
+    animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
