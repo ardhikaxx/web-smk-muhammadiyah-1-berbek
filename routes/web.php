@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ManajemenBannerController;
 use App\Http\Controllers\ManajemenAdminController;
 use App\Http\Controllers\SettingsController;
 
@@ -28,6 +29,14 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/admin/dashboard', function () {
         return view('admin.dashboard.index');
     })->name('admin.dashboard');
+
+    // Manajemen Banner Routes
+    Route::get('/admin/manajemen-banner', [ManajemenBannerController::class, 'index'])->name('admin.manajemen-banner.index');
+    Route::post('/admin/manajemen-banner', [ManajemenBannerController::class, 'store'])->name('admin.manajemen-banner.store');
+    Route::get('/admin/manajemen-banner/{banner}', [ManajemenBannerController::class, 'show'])->name('admin.manajemen-banner.show');
+    Route::put('/admin/manajemen-banner/{banner}', [ManajemenBannerController::class, 'update'])->name('admin.manajemen-banner.update');
+    Route::delete('/admin/manajemen-banner/{banner}', [ManajemenBannerController::class, 'destroy'])->name('admin.manajemen-banner.destroy');
+    Route::patch('/admin/manajemen-banner/{banner}/status', [ManajemenBannerController::class, 'updateStatus'])->name('admin.manajemen-banner.status');
 
     // Manajemen Admin Routes
     Route::get('/admin/manajemen-admin', [ManajemenAdminController::class, 'index'])->name('admin.manajemen-admin.index');

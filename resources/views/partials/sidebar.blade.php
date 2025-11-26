@@ -15,7 +15,8 @@
         </li>
 
         <li class="sidebar-item">
-            <a href="#" class="sidebar-link">
+            <a href="{{ route('admin.manajemen-banner.index') }}"
+                class="sidebar-link {{ Request::routeIs('admin.manajemen-banner.*') ? 'active' : '' }}">
                 <i class="fas fa-image"></i>
                 <span>Manajemen Banner</span>
             </a>
