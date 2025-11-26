@@ -29,11 +29,8 @@
                         </div>
                         <small class="text-muted">{{ Auth::guard('admin')->user()->email }}</small>
                     </div>
-                    <a href="#" class="profile-menu-item">
-                        <i class="fas fa-user me-2"></i>Profile
-                    </a>
-                    <a href="#" class="profile-menu-item">
-                        <i class="fas fa-cog me-2"></i>Settings
+                    <a href="{{ route('admin.settings') }}" class="profile-menu-item">
+                        <i class="fas fa-user-cog me-2"></i>Profile Settings
                     </a>
                     <div class="dropdown-divider"></div>
                     <a href="#" class="profile-menu-item text-danger" onclick="confirmLogout()">

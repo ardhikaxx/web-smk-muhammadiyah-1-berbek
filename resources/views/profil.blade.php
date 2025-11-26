@@ -1047,6 +1047,9 @@
                             <a class="nav-link active" href="{{ route('profil') }}">Profil</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="">Prestasi</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('landing-page') }}#jurusan">Jurusan</a>
                         </li>
                         <li class="nav-item">

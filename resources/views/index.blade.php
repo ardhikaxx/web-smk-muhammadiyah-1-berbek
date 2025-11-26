@@ -1135,6 +1135,9 @@
                             <a class="nav-link" href="{{ route('profil') }}">Profil</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="">Prestasi</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="#jurusan">Jurusan</a>
                         </li>
                         <li class="nav-item">
