@@ -11,13 +11,6 @@
                     <h1 class="page-title">Pengaturan Akun</h1>
                     <p class="page-subtitle">Kelola informasi profil dan keamanan akun Anda</p>
                 </div>
-                <div class="col-auto">
-                    <div class="alert alert-info alert-dismissible fade show" role="alert">
-                        <i class="fas fa-info-circle me-2"></i>
-                        Anda login sebagai <strong>{{ Auth::guard('admin')->user()->nama_lengkap }}</strong>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -59,7 +52,7 @@
                     </div>
                 </div>
 
-                <div class="settings-card security-card mt-4">
+                <div class="settings-card security-card mt-4 mb-4 lg:mb-0">
                     <div class="card-header">
                         <div class="header-content">
                             <i class="fas fa-shield-alt header-icon"></i>
