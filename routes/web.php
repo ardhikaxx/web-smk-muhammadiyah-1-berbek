@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ManajemenBannerController;
+use App\Http\Controllers\ManajemenPengumumanController;
 use App\Http\Controllers\ManajemenFasilitasController;
 use App\Http\Controllers\ManajemenPrestasiController;
 use App\Http\Controllers\ManajemenJurusanController;
@@ -37,6 +38,14 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::put('/admin/manajemen-banner/{banner}', [ManajemenBannerController::class, 'update'])->name('admin.manajemen-banner.update');
     Route::delete('/admin/manajemen-banner/{banner}', [ManajemenBannerController::class, 'destroy'])->name('admin.manajemen-banner.destroy');
     Route::patch('/admin/manajemen-banner/{banner}/status', [ManajemenBannerController::class, 'updateStatus'])->name('admin.manajemen-banner.status');
+
+    // Manajemen Pengumuman Routes
+    Route::get('/admin/manajemen-pengumuman', [ManajemenPengumumanController::class, 'index'])->name('admin.manajemen-pengumuman.index');
+    Route::post('/admin/manajemen-pengumuman', [ManajemenPengumumanController::class, 'store'])->name('admin.manajemen-pengumuman.store');
+    Route::get('/admin/manajemen-pengumuman/{pengumuman}', [ManajemenPengumumanController::class, 'show'])->name('admin.manajemen-pengumuman.show');
+    Route::put('/admin/manajemen-pengumuman/{pengumuman}', [ManajemenPengumumanController::class, 'update'])->name('admin.manajemen-pengumuman.update');
+    Route::delete('/admin/manajemen-pengumuman/{pengumuman}', [ManajemenPengumumanController::class, 'destroy'])->name('admin.manajemen-pengumuman.destroy');
+    Route::patch('/admin/manajemen-pengumuman/{pengumuman}/status', [ManajemenPengumumanController::class, 'updateStatus'])->name('admin.manajemen-pengumuman.status');
 
     // Manajemen Fasilitas Routes
     Route::get('/admin/manajemen-fasilitas', [ManajemenFasilitasController::class, 'index'])->name('admin.manajemen-fasilitas.index');

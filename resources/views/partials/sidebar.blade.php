@@ -23,6 +23,14 @@
         </li>
 
         <li class="sidebar-item">
+            <a href="{{ route('admin.manajemen-pengumuman.index') }}"
+                class="sidebar-link {{ Request::routeIs('admin.manajemen-pengumuman.*') ? 'active' : '' }}">
+                <i class="fas fa-bullhorn"></i>
+                <span>Manajemen Pengumuman</span>
+            </a>
+        </li>
+
+        <li class="sidebar-item">
             <a href="{{ route('admin.manajemen-fasilitas.index') }}"
                 class="sidebar-link {{ Request::routeIs('admin.manajemen-fasilitas.*') ? 'active' : '' }}">
                 <i class="fas fa-building"></i>
