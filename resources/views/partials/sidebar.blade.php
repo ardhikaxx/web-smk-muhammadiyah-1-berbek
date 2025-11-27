@@ -52,7 +52,8 @@
         </li>
 
         <li class="sidebar-item">
-            <a href="#" class="sidebar-link">
+            <a href="{{ route('admin.manajemen-gallery.index') }}"
+                class="sidebar-link {{ Request::routeIs('admin.manajemen-gallery.*') ? 'active' : '' }}">
                 <i class="fas fa-images"></i>
                 <span>Manajemen Gallery</span>
             </a>

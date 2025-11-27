@@ -5,6 +5,7 @@ use App\Http\Controllers\IndexController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ManajemenBannerController;
 use App\Http\Controllers\ManajemenFasilitasController;
+use App\Http\Controllers\ManajemenGalleryController;
 use App\Http\Controllers\ManajemenAdminController;
 use App\Http\Controllers\SettingsController;
 
@@ -45,6 +46,14 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::put('/admin/manajemen-fasilitas/{fasilitas}', [ManajemenFasilitasController::class, 'update'])->name('admin.manajemen-fasilitas.update');
     Route::delete('/admin/manajemen-fasilitas/{fasilitas}', [ManajemenFasilitasController::class, 'destroy'])->name('admin.manajemen-fasilitas.destroy');
     Route::patch('/admin/manajemen-fasilitas/{fasilitas}/status', [ManajemenFasilitasController::class, 'updateStatus'])->name('admin.manajemen-fasilitas.status');
+
+    // Manajemen Gallery Routes
+    Route::get('/admin/manajemen-gallery', [ManajemenGalleryController::class, 'index'])->name('admin.manajemen-gallery.index');
+    Route::post('/admin/manajemen-gallery', [ManajemenGalleryController::class, 'store'])->name('admin.manajemen-gallery.store');
+    Route::get('/admin/manajemen-gallery/{gallery}', [ManajemenGalleryController::class, 'show'])->name('admin.manajemen-gallery.show');
+    Route::put('/admin/manajemen-gallery/{gallery}', [ManajemenGalleryController::class, 'update'])->name('admin.manajemen-gallery.update');
+    Route::delete('/admin/manajemen-gallery/{gallery}', [ManajemenGalleryController::class, 'destroy'])->name('admin.manajemen-gallery.destroy');
+    Route::patch('/admin/manajemen-gallery/{gallery}/status', [ManajemenGalleryController::class, 'updateStatus'])->name('admin.manajemen-gallery.status');
 
     // Manajemen Admin Routes
     Route::get('/admin/manajemen-admin', [ManajemenAdminController::class, 'index'])->name('admin.manajemen-admin.index');
