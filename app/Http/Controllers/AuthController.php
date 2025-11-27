@@ -27,7 +27,7 @@ class AuthController extends Controller
             ]
         ]);
     }
-    
+
     /**
      * Show login form
      */
@@ -60,10 +60,10 @@ class AuthController extends Controller
 
         // Coba login
         $credentials = $request->only('email', 'password');
-        
+
         if (Auth::guard('admin')->attempt($credentials, $request->filled('remember'))) {
             $request->session()->regenerate();
-            
+
             return redirect()->intended(route('admin.dashboard'))
                 ->with('success', 'Login berhasil! Selamat datang.');
         }
@@ -79,11 +79,11 @@ class AuthController extends Controller
     public function logout(Request $request)
     {
         Auth::guard('admin')->logout();
-        
+
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect()->route('auth.login')
+        return redirect()->route('login')
             ->with('success', 'Logout berhasil!');
     }
 

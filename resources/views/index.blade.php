@@ -7,7 +7,9 @@
     <title>SMK Muhammadiyah 1 Berbek - Sekolah Unggulan Berbasis Teknologi</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.6.0/css/glide.core.min.css">
     <link rel="shortcut icon" href="{{ asset('images/logo-single.png') }}" type="image/x-icon">
@@ -1185,34 +1187,56 @@
                 <div class="col-lg-6">
                     <div class="hero-carousel animate__animated animate__fadeIn animate__delay-1s">
                         <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
-                            <div class="carousel-indicators">
-                                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0"
-                                    class="active" aria-current="true" aria-label="Slide 1"></button>
-                                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"
-                                    aria-label="Slide 2"></button>
-                                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"
-                                    aria-label="Slide 3"></button>
-                                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="3"
-                                    aria-label="Slide 4"></button>
-                            </div>
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img src="{{ asset('images/hero/hero1.jpg') }}" class="d-block w-100"
-                                        alt="Gedung Sekolah">
+                            @if ($banners->count() > 0)
+                                <div class="carousel-indicators">
+                                    @foreach ($banners as $index => $banner)
+                                        <button type="button" data-bs-target="#heroCarousel"
+                                            data-bs-slide-to="{{ $index }}"
+                                            class="{{ $index == 0 ? 'active' : '' }}"
+                                            aria-current="{{ $index == 0 ? 'true' : 'false' }}"
+                                            aria-label="Slide {{ $index + 1 }}"></button>
+                                    @endforeach
                                 </div>
-                                <div class="carousel-item">
-                                    <img src="{{ asset('images/hero/hero2.jpg') }}" class="d-block w-100"
-                                        alt="Kegiatan Belajar">
+
+                                <div class="carousel-inner">
+                                    @foreach ($banners as $index => $banner)
+                                        <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+                                            <img src="{{ $banner->gambar_url }}" class="d-block w-100"
+                                                alt="{{ $banner->judul ?? 'Banner' }}">
+                                        </div>
+                                    @endforeach
                                 </div>
-                                <div class="carousel-item">
-                                    <img src="{{ asset('images/hero/hero3.jpg') }}" class="d-block w-100"
-                                        alt="Laboratorium Komputer">
+                            @else
+                                <div class="carousel-indicators">
+                                    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0"
+                                        class="active" aria-current="true" aria-label="Slide 1"></button>
+                                    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"
+                                        aria-label="Slide 2"></button>
+                                    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"
+                                        aria-label="Slide 3"></button>
+                                    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="3"
+                                        aria-label="Slide 4"></button>
                                 </div>
-                                <div class="carousel-item">
-                                    <img src="{{ asset('images/hero/hero4.jpg') }}" class="d-block w-100"
-                                        alt="Bengkel Otomotif">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img src="{{ asset('images/hero/hero1.jpg') }}" class="d-block w-100"
+                                            alt="Gedung Sekolah">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="{{ asset('images/hero/hero2.jpg') }}" class="d-block w-100"
+                                            alt="Kegiatan Belajar">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="{{ asset('images/hero/hero3.jpg') }}" class="d-block w-100"
+                                            alt="Laboratorium Komputer">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="{{ asset('images/hero/hero4.jpg') }}" class="d-block w-100"
+                                            alt="Bengkel Otomotif">
+                                    </div>
                                 </div>
-                            </div>
+                            @endif
+
                             <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel"
                                 data-bs-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -1361,38 +1385,57 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card facility-card">
-                        <img src="{{ asset('images/fasilitas/kelas.jpg') }}" class="card-img-top" alt="Ruang Kelas">
-                        <div class="facility-overlay">
-                            <h5 class="card-title text-white">Ruang Kelas Nyaman</h5>
-                            <p class="card-text">Ruang kelas yang dilengkapi dengan AC, LCD projector, dan fasilitas
-                                pendukung pembelajaran lainnya.</p>
+                @if ($fasilitas->count() > 0)
+                    @foreach ($fasilitas as $fasilitasItem)
+                        <div class="col-md-6 col-lg-4 mb-4">
+                            <div class="card facility-card">
+                                <img src="{{ $fasilitasItem->foto_fasilitas_url }}" class="card-img-top"
+                                    alt="{{ $fasilitasItem->nama_fasilitas }}">
+                                <div class="facility-overlay">
+                                    <h5 class="card-title text-white">{{ $fasilitasItem->nama_fasilitas }}</h5>
+                                    <p class="card-text">{{ $fasilitasItem->deskripsi_fasilitas }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                @else
+                    <!-- Fallback jika tidak ada fasilitas aktif -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card facility-card">
+                            <img src="{{ asset('images/fasilitas/kelas.jpg') }}" class="card-img-top"
+                                alt="Ruang Kelas">
+                            <div class="facility-overlay">
+                                <h5 class="card-title text-white">Ruang Kelas Nyaman</h5>
+                                <p class="card-text">Ruang kelas yang dilengkapi dengan AC, LCD projector, dan
+                                    fasilitas
+                                    pendukung pembelajaran lainnya.</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card facility-card">
-                        <img src="{{ asset('images/fasilitas/lab-kom.jpg') }}"
-                            class="card-img-top" alt="Laboratorium Komputer">
-                        <div class="facility-overlay">
-                            <h5 class="card-title text-white">Laboratorium Komputer</h5>
-                            <p class="card-text">Laboratorium komputer dengan spesifikasi tinggi untuk praktik
-                                pemrograman dan jaringan.</p>
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card facility-card">
+                            <img src="{{ asset('images/fasilitas/lab-kom.jpg') }}" class="card-img-top"
+                                alt="Laboratorium Komputer">
+                            <div class="facility-overlay">
+                                <h5 class="card-title text-white">Laboratorium Komputer</h5>
+                                <p class="card-text">Laboratorium komputer dengan spesifikasi tinggi untuk praktik
+                                    pemrograman dan jaringan.</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card facility-card">
-                        <img src="{{ asset('images/fasilitas/bengkel.jpg') }}"
-                            class="card-img-top" alt="Bengkel Otomotif">
-                        <div class="facility-overlay">
-                            <h5 class="card-title text-white">Bengkel Otomotif</h5>
-                            <p class="card-text">Bengkel lengkap dengan peralatan modern untuk praktik teknik kendaraan
-                                ringan dan sepeda motor.</p>
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card facility-card">
+                            <img src="{{ asset('images/fasilitas/bengkel.jpg') }}" class="card-img-top"
+                                alt="Bengkel Otomotif">
+                            <div class="facility-overlay">
+                                <h5 class="card-title text-white">Bengkel Otomotif</h5>
+                                <p class="card-text">Bengkel lengkap dengan peralatan modern untuk praktik teknik
+                                    kendaraan
+                                    ringan dan sepeda motor.</p>
+                            </div>
                         </div>
                     </div>
-                </div>
+                @endif
             </div>
         </div>
     </section>
@@ -1505,8 +1548,7 @@
             <div class="row">
                 <div class="col-md-4 mb-4">
                     <div class="gallery-item">
-                        <img src="{{ asset('images/gallery/g1.jpg') }}"
-                            alt="Praktikum Lab">
+                        <img src="{{ asset('images/gallery/g1.jpg') }}" alt="Praktikum Lab">
                         <div class="gallery-overlay">
                             <div class="gallery-text">
                                 <h5>Praktikum Lab Komputer</h5>
@@ -1528,8 +1570,7 @@
                 </div>
                 <div class="col-md-4 mb-4">
                     <div class="gallery-item">
-                        <img src="{{ asset('images/gallery/g3.jpg') }}"
-                            alt="Upacara Bendera">
+                        <img src="{{ asset('images/gallery/g3.jpg') }}" alt="Upacara Bendera">
                         <div class="gallery-overlay">
                             <div class="gallery-text">
                                 <h5>Upacara Bendera</h5>

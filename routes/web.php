@@ -1,22 +1,21 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\IndexController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ManajemenBannerController;
 use App\Http\Controllers\ManajemenFasilitasController;
 use App\Http\Controllers\ManajemenAdminController;
 use App\Http\Controllers\SettingsController;
 
-Route::get('/', function () {
-    return view('index');
-})->name('landing-page');
+Route::get('/', [IndexController::class, 'index'])->name('landing-page');
 
 Route::get('/profil-sekolah', function () {
     return view('profil');
 })->name('profil');
 
 // Auth Routes
-Route::get('/login', [AuthController::class, 'showLoginForm'])->name('auth.login');
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('auth.login.submit');
 Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 
@@ -54,7 +53,7 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::put('/admin/manajemen-admin/{admin}', [ManajemenAdminController::class, 'update'])->name('admin.manajemen-admin.update');
     Route::delete('/admin/manajemen-admin/{admin}', [ManajemenAdminController::class, 'destroy'])->name('admin.manajemen-admin.destroy');
     Route::post('/admin/manajemen-admin/{admin}/password', [ManajemenAdminController::class, 'updatePassword'])->name('admin.manajemen-admin.password');
-    
+
     // Settings Routes
     Route::get('/admin/settings', [SettingsController::class, 'index'])->name('admin.settings');
     Route::post('/admin/settings/profile', [SettingsController::class, 'updateProfile'])->name('admin.settings.profile');
