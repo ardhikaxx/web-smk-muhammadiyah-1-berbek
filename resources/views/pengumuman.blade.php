@@ -66,7 +66,7 @@
         }
 
         .section-padding {
-            padding: 10px 0;
+            padding: 30px 0;
         }
 
         .section-title {
@@ -570,7 +570,7 @@
 
         @media (max-width: 991.98px) {
             .section-padding {
-                padding: 80px 0;
+                padding: 30px 0;
             }
 
             .section-title {
