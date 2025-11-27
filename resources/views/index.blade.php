@@ -1120,7 +1120,7 @@
     <header class="header-section">
         <nav class="navbar navbar-expand-lg navbar-light fixed-top">
             <div class="container">
-                <a class="navbar-brand" href="#beranda">
+                <a class="navbar-brand" href="{{ route('landing-page') }}">
                     <img src="{{ asset('images/logo-black.png') }}" alt="SMK Muhammadiyah 1 Berbek" height="68"
                         class="d-inline-block align-text-center">
                 </a>
@@ -1134,6 +1134,9 @@
                             <a class="nav-link active" href="#beranda">Beranda</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="{{ route('pengumuman') }}">Pengumuman</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('profil') }}">Profil</a>
                         </li>
                         <li class="nav-item">
@@ -1144,12 +1147,6 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#fasilitas">Fasilitas</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="">Pengumuman</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#ppdb">PPDB</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#galeri">Galeri</a>
@@ -1179,7 +1176,7 @@
                             Menengah Kejuruan yang berkomitmen untuk menghasilkan lulusan yang kompeten, berakhlak
                             mulia, dan siap menghadapi tantangan dunia kerja dengan kurikulum berbasis industri.</p>
                         <div class="hero-buttons mt-4 animate__animated animate__fadeInUp animate__delay-3s">
-                            <a href="#ppdb" class="btn btn-light btn-lg">Daftar Sekarang</a>
+                            <a href="{{ route('pengumuman') }}" class="btn btn-light btn-lg">Pengumuman</a>
                             <a href="{{ route('profil') }}" class="btn btn-outline-light btn-lg">Tentang Kami</a>
                         </div>
                     </div>
@@ -1386,101 +1383,6 @@
                         </div>
                     </div>
                 @endif
-            </div>
-        </div>
-    </section>
-
-    <section id="ppdb" class="ppdb-section section-padding">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-8">
-                    <h2 class="text-white fw-bold">Penerimaan Peserta Didik Baru</h2>
-                    <p class="section-subtitle text-white mb-4">Tahun Ajaran 2026/2027 - Bergabunglah dengan Keluarga
-                        Besar SMK Muhammadiyah 1 Berbek</p>
-                    <div class="ppdb-info">
-                        <div class="row">
-                            <div class="col-md-6 mb-4">
-                                <div class="ppdb-info-card">
-                                    <div class="d-flex align-items-center">
-                                        <div class="ppdb-icon">
-                                            <i class="fas fa-calendar-alt"></i>
-                                        </div>
-                                        <div>
-                                            <h5 class="text-white">Jadwal Pendaftaran</h5>
-                                            <p class="text-white mb-0">1 Mei - 30 Juni 2026</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 mb-4">
-                                <div class="ppdb-info-card">
-                                    <div class="d-flex align-items-center">
-                                        <div class="ppdb-icon">
-                                            <i class="fas fa-file-alt"></i>
-                                        </div>
-                                        <div>
-                                            <h5 class="text-white">Syarat Pendaftaran</h5>
-                                            <p class="text-white mb-0">FC Ijazah, FC SKHUN, FC Akte Kelahiran</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 mb-4">
-                                <div class="ppdb-info-card">
-                                    <div class="d-flex align-items-center">
-                                        <div class="ppdb-icon">
-                                            <i class="fas fa-money-bill-wave"></i>
-                                        </div>
-                                        <div>
-                                            <h5 class="text-white">Biaya Pendaftaran</h5>
-                                            <p class="text-white mb-0">Rp 250.000 (Dapat dicicil)</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 mb-4">
-                                <div class="ppdb-info-card">
-                                    <div class="d-flex align-items-center">
-                                        <div class="ppdb-icon">
-                                            <i class="fas fa-user-graduate"></i>
-                                        </div>
-                                        <div>
-                                            <h5 class="text-white">Kuota Penerimaan</h5>
-                                            <p class="text-white mb-0">320 Siswa (8 Rombel)</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="ppdb-form">
-                        <h4 class="text-center mb-4 text-primary">Formulir Minat</h4>
-                        <form>
-                            <div class="mb-3">
-                                <input type="text" class="form-control" placeholder="Nama Lengkap">
-                            </div>
-                            <div class="mb-3">
-                                <input type="email" class="form-control" placeholder="Email">
-                            </div>
-                            <div class="mb-3">
-                                <input type="tel" class="form-control" placeholder="Nomor Telepon">
-                            </div>
-                            <div class="mb-3">
-                                <select class="form-select">
-                                    <option selected>Pilih Jurusan</option>
-                                    <option value="AKL">Akuntansi dan Keuangan Lembaga (AKL)</option>
-                                    <option value="TKJ">Teknik Komputer dan Jaringan (TKJ)</option>
-                                    <option value="TKRO">Teknik Kendaraan Ringan Otomotif (TKRO)</option>
-                                </select>
-                            </div>
-                            <div class="d-grid">
-                                <button type="submit" class="btn btn-primary btn-lg">Kirim Minat</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
             </div>
         </div>
     </section>

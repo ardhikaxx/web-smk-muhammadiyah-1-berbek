@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prestasi Siswa - SMK Muhammadiyah 1 Berbek</title>
+    <title>Pengumuman - SMK Muhammadiyah 1 Berbek</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link
@@ -19,12 +19,15 @@
             --primary-dark: #004d99;
             --primary-light: #4d94ff;
             --secondary: #00a8ff;
+            --accent: #ff6b6b;
+            --accent-light: #ff9999;
             --dark: #1a1a2e;
             --darker: #0d0d1a;
             --light: #f8f9fa;
             --lighter: #ffffff;
             --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
             --gradient-dark: linear-gradient(135deg, var(--primary-dark), #0097e6);
+            --gradient-accent: linear-gradient(135deg, var(--accent), #ff8e8e);
             --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
             --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.12);
             --shadow-xl: 0 25px 50px rgba(0, 0, 0, 0.15);
@@ -208,8 +211,8 @@
             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
         }
 
-        /* Prestasi Card Styles */
-        .prestasi-card {
+        /* Pengumuman Card Styles */
+        .pengumuman-card {
             border: none;
             border-radius: var(--border-radius);
             overflow: hidden;
@@ -221,7 +224,7 @@
             z-index: 1;
         }
 
-        .prestasi-card::before {
+        .pengumuman-card::before {
             content: '';
             position: absolute;
             top: 0;
@@ -232,23 +235,23 @@
             z-index: 2;
         }
 
-        .prestasi-card:hover {
+        .pengumuman-card:hover {
             transform: translateY(-15px);
             box-shadow: var(--shadow-lg);
         }
 
-        .prestasi-image {
+        .pengumuman-image {
             height: 250px;
             width: 100%;
             object-fit: cover;
             transition: transform 0.7s ease;
         }
 
-        .prestasi-card:hover .prestasi-image {
+        .pengumuman-card:hover .pengumuman-image {
             transform: scale(1.05);
         }
 
-        .prestasi-badge {
+        .pengumuman-badge {
             position: absolute;
             top: 15px;
             right: 15px;
@@ -262,34 +265,35 @@
             z-index: 3;
         }
 
-        .prestasi-content {
+        .pengumuman-content {
             padding: 25px;
         }
 
-        .prestasi-title {
+        .pengumuman-title {
             font-size: 1.4rem;
             font-weight: 700;
             color: var(--primary);
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             line-height: 1.4;
         }
 
-        .prestasi-student {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--dark);
-            margin-bottom: 8px;
+        .pengumuman-description {
+            color: #6c757d;
+            margin-bottom: 20px;
+            line-height: 1.6;
         }
 
-        .prestasi-meta {
+        .pengumuman-meta {
             display: flex;
             align-items: center;
-            gap: 15px;
-            margin-bottom: 15px;
+            justify-content: space-between;
+            padding-top: 15px;
+            border-top: 1px solid #e9ecef;
             flex-wrap: wrap;
+            gap: 10px;
         }
 
-        .prestasi-meta-item {
+        .pengumuman-meta-item {
             display: flex;
             align-items: center;
             gap: 5px;
@@ -297,14 +301,28 @@
             font-size: 0.9rem;
         }
 
-        .prestasi-meta-item i {
+        .pengumuman-meta-item i {
             color: var(--primary);
         }
 
-        .prestasi-description {
+        .pengumuman-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .pengumuman-status.active {
+            background: rgba(40, 167, 69, 0.1);
+            color: #28a745;
+        }
+
+        .pengumuman-status.inactive {
+            background: rgba(108, 117, 125, 0.1);
             color: #6c757d;
-            margin-bottom: 0;
-            line-height: 1.6;
         }
 
         /* Filter Styles */
@@ -577,8 +595,14 @@
                 font-size: 1.1rem;
             }
 
-            .prestasi-card {
+            .pengumuman-card {
                 margin-bottom: 25px;
+            }
+
+            .pengumuman-meta {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
             }
 
             .footer-section {
@@ -600,12 +624,6 @@
 
             .navbar-brand {
                 font-size: 1.5rem;
-            }
-
-            .prestasi-meta {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 8px;
             }
         }
     </style>
@@ -638,13 +656,13 @@
                             <a class="nav-link" href="{{ route('landing-page') }}">Beranda</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('pengumuman') }}">Pengumuman</a>
+                            <a class="nav-link active" href="{{ route('pengumuman') }}">Pengumuman</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('profil') }}">Profil</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="{{ route('prestasi') }}">Prestasi</a>
+                            <a class="nav-link" href="{{ route('prestasi') }}">Prestasi</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('landing-page') }}#jurusan">Jurusan</a>
@@ -662,33 +680,13 @@
     </header>
 
     <section class="hero-section" style="background: var(--gradient-dark); padding: 130px 0 40px;">
-    <div class="container">
-        <div class="row">
-            <div class="col-12 text-center text-white mt-4">
-                <h1 class="hero-title animate__animated animate__fadeInUp">Prestasi Siswa</h1>
-                <p class="hero-subtitle animate__animated animate__fadeInUp animate__delay-1s">
-                    Kumpulan prestasi membanggakan yang telah diraih oleh siswa-siswi SMK Muhammadiyah 1 Berbek
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
-
-    <section class="filter-section">
         <div class="container">
             <div class="row">
-                <div class="col-12 text-center">
-                    <h3 class="mb-2">Filter Berdasarkan Jurusan</h3>
-                    <div class="filter-buttons">
-                        <button class="filter-btn active" data-filter="all">Semua</button>
-                        @php
-                            $jurusanList = $prestasi->pluck('jurusan')->unique()->sort();
-                        @endphp
-                        @foreach ($jurusanList as $jurusan)
-                            <button class="filter-btn"
-                                data-filter="{{ Str::slug($jurusan) }}">{{ $jurusan }}</button>
-                        @endforeach
-                    </div>
+                <div class="col-12 text-center text-white mt-4">
+                    <h1 class="hero-title animate__animated animate__fadeInUp">Pengumuman</h1>
+                    <p class="hero-subtitle animate__animated animate__fadeInUp animate__delay-1s">
+                        Informasi terbaru dan pengumuman penting dari SMK Muhammadiyah 1 Berbek
+                    </p>
                 </div>
             </div>
         </div>
@@ -696,37 +694,34 @@
 
     <section class="section-padding">
         <div class="container">
-            @if ($prestasi->count() > 0)
-                <div class="row" id="prestasi-grid">
-                    @foreach ($prestasi as $item)
-                        <div class="col-lg-4 col-md-6 mb-4 prestasi-item"
-                            data-jurusan="{{ Str::slug($item->jurusan) }}" data-year="{{ $item->tahun_prestasi }}">
-                            <div class="prestasi-card animate__animated animate__fadeInUp">
+            @if ($pengumuman->count() > 0)
+                <div class="row" id="pengumuman-grid">
+                    @foreach ($pengumuman as $item)
+                        <div class="col-lg-4 col-md-6 mb-4 pengumuman-item">
+                            <div class="pengumuman-card animate__animated animate__fadeInUp">
                                 <div class="position-relative overflow-hidden">
-                                    <img src="{{ $item->foto_prestasi_url }}" class="prestasi-image"
-                                        alt="{{ $item->nama_prestasi }}"
+                                    <img src="{{ $item->foto_pengumuman_url }}" class="pengumuman-image"
+                                        alt="{{ $item->nama_pengumuman }}"
                                         onerror="this.src='{{ asset('images/default-img.png') }}'">
-                                    <div class="prestasi-badge">
-                                        {{ $item->peringkat }}
+                                    <div class="pengumuman-badge">
+                                        <i class="fas fa-bullhorn me-1"></i> Pengumuman
                                     </div>
                                 </div>
-                                <div class="prestasi-content">
-                                    <h4 class="prestasi-title">{{ $item->nama_prestasi }}</h4>
-                                    <h5 class="prestasi-student">{{ $item->nama_siswa }}</h5>
-                                    <div class="prestasi-meta">
-                                        <div class="prestasi-meta-item">
-                                            <i class="fas fa-graduation-cap"></i>
-                                            <span>{{ $item->jurusan }}</span>
-                                        </div>
-                                        <div class="prestasi-meta-item">
+                                <div class="pengumuman-content">
+                                    <h4 class="pengumuman-title">{{ $item->nama_pengumuman }}</h4>
+                                    <p class="pengumuman-description">
+                                        {{ $item->deskripsi_pendek }}
+                                    </p>
+                                    <div class="pengumuman-meta">
+                                        <div class="pengumuman-meta-item">
                                             <i class="fas fa-calendar-alt"></i>
-                                            <span>{{ $item->tahun_prestasi }}</span>
+                                            <span>{{ $item->created_at->format('d M Y') }}</span>
+                                        </div>
+                                        <div class="pengumuman-status {{ $item->status ? 'active' : 'inactive' }}">
+                                            <i class="fas fa-circle"></i>
+                                            {{ $item->status ? 'Aktif' : 'Tidak Aktif' }}
                                         </div>
                                     </div>
-                                    <p class="prestasi-description">
-                                        Prestasi yang membanggakan dari siswa {{ $item->jurusan }} dalam bidang
-                                        {{ strtolower($item->nama_prestasi) }}.
-                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -735,10 +730,10 @@
             @else
                 <div class="empty-state">
                     <div class="empty-state-icon">
-                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-bullhorn"></i>
                     </div>
-                    <h3 class="text-muted">Belum Ada Prestasi</h3>
-                    <p class="empty-state-text">Data prestasi siswa akan segera ditampilkan di sini.</p>
+                    <h3 class="text-muted">Belum Ada Pengumuman</h3>
+                    <p class="empty-state-text">Pengumuman akan segera ditampilkan di sini.</p>
                 </div>
             @endif
         </div>
@@ -769,6 +764,7 @@
                         <li><a href="{{ route('profil') }}"><i class="fas fa-chevron-right"></i> Profil Sekolah</a>
                         </li>
                         <li><a href="{{ route('prestasi') }}"><i class="fas fa-chevron-right"></i> Prestasi</a></li>
+                        <li><a href="{{ route('pengumuman') }}"><i class="fas fa-chevron-right"></i> Pengumuman</a></li>
                         <li><a href="{{ route('landing-page') }}#jurusan"><i class="fas fa-chevron-right"></i>
                                 Program Jurusan</a></li>
                         <li><a href="{{ route('landing-page') }}#fasilitas"><i class="fas fa-chevron-right"></i>
@@ -872,42 +868,9 @@
             });
         });
 
-        // Filter functionality
-        document.querySelectorAll('.filter-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                // Remove active class from all buttons
-                document.querySelectorAll('.filter-btn').forEach(btn => {
-                    btn.classList.remove('active');
-                });
-
-                // Add active class to clicked button
-                this.classList.add('active');
-
-                const filterValue = this.getAttribute('data-filter');
-                const prestasiItems = document.querySelectorAll('.prestasi-item');
-
-                prestasiItems.forEach(item => {
-                    if (filterValue === 'all' || item.getAttribute('data-jurusan') ===
-                        filterValue) {
-                        item.style.display = 'block';
-                        setTimeout(() => {
-                            item.style.opacity = '1';
-                            item.style.transform = 'translateY(0)';
-                        }, 50);
-                    } else {
-                        item.style.opacity = '0';
-                        item.style.transform = 'translateY(20px)';
-                        setTimeout(() => {
-                            item.style.display = 'none';
-                        }, 300);
-                    }
-                });
-            });
-        });
-
         // Animate on scroll
         const animateOnScroll = function() {
-            const elements = document.querySelectorAll('.prestasi-card');
+            const elements = document.querySelectorAll('.pengumuman-card');
 
             elements.forEach(element => {
                 const elementPosition = element.getBoundingClientRect().top;
@@ -920,7 +883,7 @@
             });
         };
 
-        document.querySelectorAll('.prestasi-card').forEach(el => {
+        document.querySelectorAll('.pengumuman-card').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(30px)';
             el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';

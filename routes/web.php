@@ -14,10 +14,12 @@ use App\Http\Controllers\ManajemenAdminController;
 use App\Http\Controllers\PrestasiController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\PengumumanController;
 
 Route::get('/', [IndexController::class, 'index'])->name('landing-page');
 Route::get('/profil', [ProfilController::class, 'index'])->name('profil');
 Route::get('/prestasi', [PrestasiController::class, 'index'])->name('prestasi');
+Route::get('/pengumuman', [PengumumanController::class, 'index'])->name('pengumuman');
 
 // Auth Routes
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');

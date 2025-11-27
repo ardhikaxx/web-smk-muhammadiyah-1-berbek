@@ -146,20 +146,6 @@ body {
     transform: scale(1.05);
 }
 
-/* PPDB Section */
-.ppdb-section {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: white;
-}
-
-.ppdb-icon {
-    color: var(--accent-color);
-}
-
-.ppdb-form {
-    transform: translateY(-20px);
-}
-
 /* Gallery */
 .gallery-item {
     position: relative;

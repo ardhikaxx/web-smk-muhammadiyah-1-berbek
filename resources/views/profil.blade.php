@@ -1046,6 +1046,9 @@
                             <a class="nav-link" href="{{ route('landing-page') }}">Beranda</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="{{ route('pengumuman') }}">Pengumuman</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link active" href="{{ route('profil') }}">Profil</a>
                         </li>
                         <li class="nav-item">
@@ -1056,12 +1059,6 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('landing-page') }}#fasilitas">Fasilitas</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="">Pengumuman</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('landing-page') }}#ppdb">PPDB</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('landing-page') }}#galeri">Galeri</a>
