@@ -31,7 +31,8 @@
         </li>
 
         <li class="sidebar-item">
-            <a href="#" class="sidebar-link">
+            <a href="{{ route('admin.manajemen-prestasi.index') }}"
+                class="sidebar-link {{ Request::routeIs('admin.manajemen-prestasi.*') ? 'active' : '' }}">
                 <i class="fas fa-trophy"></i>
                 <span>Manajemen Prestasi</span>
             </a>
