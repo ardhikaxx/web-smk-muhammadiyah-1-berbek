@@ -1137,7 +1137,7 @@
                             <a class="nav-link" href="{{ route('profil') }}">Profil</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">Prestasi</a>
+                            <a class="nav-link" href="{{ route('prestasi') }}">Prestasi</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#jurusan">Jurusan</a>
@@ -1146,7 +1146,7 @@
                             <a class="nav-link" href="#fasilitas">Fasilitas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#kegiatan">Kegiatan</a>
+                            <a class="nav-link" href="">Pengumuman</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#ppdb">PPDB</a>
@@ -1217,13 +1217,16 @@
                                 </div>
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                        <img src="{{ asset('images/default-img.png') }}" class="d-block w-100" alt="default">
+                                        <img src="{{ asset('images/default-img.png') }}" class="d-block w-100"
+                                            alt="default">
                                     </div>
                                     <div class="carousel-item">
-                                        <img src="{{ asset('images/default-img.png') }}" class="d-block w-100" alt="default">
+                                        <img src="{{ asset('images/default-img.png') }}" class="d-block w-100"
+                                            alt="default">
                                     </div>
                                     <div class="carousel-item">
-                                        <img src="{{ asset('images/default-img.png') }}" class="d-block w-100" alt="default">
+                                        <img src="{{ asset('images/default-img.png') }}" class="d-block w-100"
+                                            alt="default">
                                     </div>
                                 </div>
                             @endif
@@ -1262,7 +1265,7 @@
                         <div class="stat-icon">
                             <i class="fas fa-chalkboard-teacher"></i>
                         </div>
-                        <div class="stat-number">45+</div>
+                        <div class="stat-number">{{ $jumlahPengajar }}+</div>
                         <div class="stat-text">Guru Berpengalaman</div>
                     </div>
                 </div>
@@ -1271,7 +1274,7 @@
                         <div class="stat-icon">
                             <i class="fas fa-trophy"></i>
                         </div>
-                        <div class="stat-number">120+</div>
+                        <div class="stat-number">{{ $jumlahPrestasi }}+</div>
                         <div class="stat-text">Prestasi</div>
                     </div>
                 </div>
@@ -1280,7 +1283,7 @@
                         <div class="stat-icon">
                             <i class="fas fa-building"></i>
                         </div>
-                        <div class="stat-number">3</div>
+                        <div class="stat-number">{{ $jumlahJurusan }}</div>
                         <div class="stat-text">Program Jurusan</div>
                     </div>
                 </div>
@@ -1290,7 +1293,7 @@
 
     <section id="jurusan" class="section-padding">
         <div class="container">
-            <div class="row mb-5">
+            <div class="row mb-2">
                 <div class="col text-center">
                     <h2 class="section-title center">Program Keahlian</h2>
                     <p class="section-subtitle mx-auto">Pilih jurusan yang sesuai dengan minat dan bakat Anda untuk
@@ -1298,70 +1301,27 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6 col-lg-3 mb-4">
-                    <div class="card jurusan-card">
-                        <div class="card-body text-center">
-                            <div class="jurusan-icon">
-                                <i class="fas fa-calculator"></i>
-                            </div>
-                            <h4 class="card-title">AKL</h4>
-                            <h5 class="card-subtitle mb-3">Akuntansi dan Keuangan Lembaga</h5>
-                            <p class="card-text">Mempelajari pengelolaan keuangan, akuntansi, dan administrasi
-                                perpajakan untuk berbagai jenis lembaga.</p>
-                            <div class="mt-3">
-                                <span class="jurusan-badge">Prospek Kerja Luas</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3 mb-4">
-                    <div class="card jurusan-card">
-                        <div class="card-body text-center">
-                            <div class="jurusan-icon">
-                                <i class="fas fa-laptop-code"></i>
-                            </div>
-                            <h4 class="card-title">TKJ</h4>
-                            <h5 class="card-subtitle mb-3">Teknik Komputer dan Jaringan</h5>
-                            <p class="card-text">Mempelajari perakitan, perbaikan komputer, instalasi jaringan, dan
-                                administrasi sistem jaringan.</p>
-                            <div class="mt-3">
-                                <span class="jurusan-badge">Bidang IT Berkembang</span>
+                @forelse($jurusan as $item)
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 mb-4">
+                        <div class="card jurusan-card">
+                            <div class="card-body text-center">
+                                <div class="jurusan-icon">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <h4 class="card-title">{{ $item->kode_jurusan }}</h4>
+                                <h5 class="card-subtitle mb-3">{{ $item->nama_jurusan }}</h5>
+                                <p class="card-text">{{ $item->deskripsi_pendek }}</p>
+                                <div class="mt-3">
+                                    <span class="jurusan-badge">Program Unggulan</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-6 col-lg-3 mb-4">
-                    <div class="card jurusan-card">
-                        <div class="card-body text-center">
-                            <div class="jurusan-icon">
-                                <i class="fas fa-car"></i>
-                            </div>
-                            <h4 class="card-title">TKRO</h4>
-                            <h5 class="card-subtitle mb-3">Teknik Kendaraan Ringan Otomotif</h5>
-                            <p class="card-text">Mempelajari perawatan, perbaikan kendaraan ringan, dan sistem
-                                kelistrikan otomotif.</p>
-                            <div class="mt-3">
-                                <span class="jurusan-badge">Industri Otomotif</span>
-                            </div>
-                        </div>
+                @empty
+                    <div class="col-12 text-center">
+                        <p class="text-muted">Data jurusan belum tersedia.</p>
                     </div>
-                </div>
-                <div class="col-md-6 col-lg-3 mb-4">
-                    <div class="card jurusan-card">
-                        <div class="card-body text-center">
-                            <div class="jurusan-icon">
-                                <i class="fas fa-tools"></i>
-                            </div>
-                            <h4 class="card-title">TBSM</h4>
-                            <h5 class="card-subtitle mb-3">Teknik Bisnis Sepeda Motor</h5>
-                            <p class="card-text">Mempelajari teknik perbaikan, perawatan, dan bisnis sepeda motor serta
-                                sistem kelistrikannya.</p>
-                            <div class="mt-3">
-                                <span class="jurusan-badge">Bidang Otomotif</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforelse
             </div>
         </div>
     </section>
@@ -1393,8 +1353,7 @@
                     <!-- Fallback jika tidak ada fasilitas aktif -->
                     <div class="col-md-6 col-lg-4 mb-4">
                         <div class="card facility-card">
-                            <img src="{{ asset('images/default-img.png') }}" class="card-img-top"
-                                alt="Ruang Kelas">
+                            <img src="{{ asset('images/default-img.png') }}" class="card-img-top" alt="Ruang Kelas">
                             <div class="facility-overlay">
                                 <h5 class="card-title text-white">Ruang Kelas Nyaman</h5>
                                 <p class="card-text">Ruang kelas yang dilengkapi dengan AC, LCD projector, dan
@@ -1529,7 +1488,7 @@
     <!-- Galeri Section -->
     <section id="galeri" class="section-padding">
         <div class="container">
-            <div class="row mb-5">
+            <div class="row mb-2">
                 <div class="col text-center">
                     <h2 class="section-title center">Galeri Kegiatan</h2>
                     <p class="section-subtitle mx-auto">Momen berharga dalam kegiatan belajar mengajar di SMK

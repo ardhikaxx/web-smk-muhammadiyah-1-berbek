@@ -296,12 +296,12 @@
 
 .badge-active {
     background: rgba(255, 255, 255, 0.9);
-    color: var(--success);
+    color: var(--primary);
 }
 
 .badge-inactive {
     background: rgba(255, 255, 255, 0.9);
-    color: #6c757d;
+    color: #43484d;
 }
 
 /* Jurusan Content */

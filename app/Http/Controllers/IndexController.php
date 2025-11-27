@@ -5,16 +5,22 @@ namespace App\Http\Controllers;
 use App\Models\Banner;
 use App\Models\Fasilitas;
 use App\Models\Gallery;
-use Illuminate\Http\Request;
+use App\Models\Jurusan;
+use App\Models\Pengajar;
+use App\Models\Prestasi;
 
 class IndexController extends Controller
 {
     public function index()
     {
+        $jumlahPengajar = Pengajar::active()->count();
+        $jumlahJurusan = Jurusan::active()->count();
+        $jumlahPrestasi = Prestasi::active()->count();
         $banners = Banner::active()->ordered()->get();
         $fasilitas = Fasilitas::active()->ordered()->get();
         $galleries = Gallery::active()->ordered()->get();
+        $jurusan = Jurusan::active()->ordered()->get();
         
-        return view('index', compact('banners', 'fasilitas', 'galleries'));
+        return view('index', compact('banners', 'fasilitas', 'galleries', 'jurusan', 'jumlahJurusan', 'jumlahPengajar', 'jumlahPrestasi'));
     }
 }

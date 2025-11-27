@@ -7,7 +7,9 @@
     <title>Profil - SMK Muhammadiyah 1 Berbek</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.6.0/css/glide.core.min.css">
     <link rel="shortcut icon" href="{{ asset('images/logo-single.png') }}" type="image/x-icon">
@@ -631,7 +633,7 @@
         }
 
         .teacher-card .card-subtitle {
-            color: var(--secondary);
+            color: var(--primary-dark);
             font-weight: 600;
             margin-bottom: 15px;
         }
@@ -1047,7 +1049,7 @@
                             <a class="nav-link active" href="{{ route('profil') }}">Profil</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">Prestasi</a>
+                            <a class="nav-link" href="{{ route('prestasi') }}">Prestasi</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('landing-page') }}#jurusan">Jurusan</a>
@@ -1056,7 +1058,7 @@
                             <a class="nav-link" href="{{ route('landing-page') }}#fasilitas">Fasilitas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('landing-page') }}#kegiatan">Kegiatan</a>
+                            <a class="nav-link" href="">Pengumuman</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('landing-page') }}#ppdb">PPDB</a>
@@ -1081,9 +1083,14 @@
             <div class="row align-items-center">
                 <div class="col-lg-6">
                     <div class="hero-content">
-                        <h1 class="hero-title animate__animated animate__fadeInUp">Profil SMK Muhammadiyah 1 Berbek Nganjuk</h1>
-                        <p class="hero-subtitle animate__animated animate__fadeInUp animate__delay-1s">Menelusuri Jejak Perjalanan dan Identitas Sekolah</p>
-                        <p class="hero-description animate__animated animate__fadeInUp animate__delay-2s">SMK Muhammadiyah 1 Berbek telah menjadi bagian penting dalam dunia pendidikan di Kabupaten Nganjuk, dengan komitmen untuk menghasilkan lulusan yang kompeten, berakhlak mulia, dan siap menghadapi tantangan dunia kerja.</p>
+                        <h1 class="hero-title animate__animated animate__fadeInUp">Profil SMK Muhammadiyah 1 Berbek
+                            Nganjuk</h1>
+                        <p class="hero-subtitle animate__animated animate__fadeInUp animate__delay-1s">Menelusuri Jejak
+                            Perjalanan dan Identitas Sekolah</p>
+                        <p class="hero-description animate__animated animate__fadeInUp animate__delay-2s">SMK
+                            Muhammadiyah 1 Berbek telah menjadi bagian penting dalam dunia pendidikan di Kabupaten
+                            Nganjuk, dengan komitmen untuk menghasilkan lulusan yang kompeten, berakhlak mulia, dan siap
+                            menghadapi tantangan dunia kerja.</p>
                         <div class="hero-buttons mt-4 animate__animated animate__fadeInUp animate__delay-3s">
                             <a href="#visi-misi" class="btn btn-light btn-lg">Visi & Misi</a>
                             <a href="#struktur" class="btn btn-outline-light btn-lg">Struktur Organisasi</a>
@@ -1093,34 +1100,50 @@
                 <div class="col-lg-6">
                     <div class="hero-carousel animate__animated animate__fadeIn animate__delay-1s">
                         <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
-                            <div class="carousel-indicators">
-                                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0"
-                                    class="active" aria-current="true" aria-label="Slide 1"></button>
-                                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"
-                                    aria-label="Slide 2"></button>
-                                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"
-                                    aria-label="Slide 3"></button>
-                                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="3"
-                                    aria-label="Slide 4"></button>
-                            </div>
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img src="{{ asset('images/hero/hero1.jpg') }}" class="d-block w-100"
-                                        alt="Gedung Sekolah">
+                            @if ($banners->count() > 0)
+                                <div class="carousel-indicators">
+                                    @foreach ($banners as $index => $banner)
+                                        <button type="button" data-bs-target="#heroCarousel"
+                                            data-bs-slide-to="{{ $index }}"
+                                            class="{{ $index == 0 ? 'active' : '' }}"
+                                            aria-current="{{ $index == 0 ? 'true' : 'false' }}"
+                                            aria-label="Slide {{ $index + 1 }}"></button>
+                                    @endforeach
                                 </div>
-                                <div class="carousel-item">
-                                    <img src="{{ asset('images/hero/hero2.jpg') }}" class="d-block w-100"
-                                        alt="Kegiatan Belajar">
+
+                                <div class="carousel-inner">
+                                    @foreach ($banners as $index => $banner)
+                                        <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+                                            <img src="{{ $banner->gambar_url }}" class="d-block w-100"
+                                                alt="{{ $banner->judul ?? 'Banner' }}">
+                                        </div>
+                                    @endforeach
                                 </div>
-                                <div class="carousel-item">
-                                    <img src="{{ asset('images/hero/hero3.jpg') }}" class="d-block w-100"
-                                        alt="Laboratorium Komputer">
+                            @else
+                                <div class="carousel-indicators">
+                                    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0"
+                                        class="active" aria-current="true" aria-label="Slide 1"></button>
+                                    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"
+                                        aria-label="Slide 2"></button>
+                                    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"
+                                        aria-label="Slide 3"></button>
                                 </div>
-                                <div class="carousel-item">
-                                    <img src="{{ asset('images/hero/hero4.jpg') }}" class="d-block w-100"
-                                        alt="Bengkel Otomotif">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img src="{{ asset('images/default-img.png') }}" class="d-block w-100"
+                                            alt="default">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="{{ asset('images/default-img.png') }}" class="d-block w-100"
+                                            alt="default">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="{{ asset('images/default-img.png') }}" class="d-block w-100"
+                                            alt="default">
+                                    </div>
                                 </div>
-                            </div>
+                            @endif
+
                             <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel"
                                 data-bs-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -1164,7 +1187,7 @@
                         <div class="stat-icon">
                             <i class="fas fa-chalkboard-teacher"></i>
                         </div>
-                        <div class="stat-number">45+</div>
+                        <div class="stat-number">{{ $jumlahPengajar }}+</div>
                         <div class="stat-text">Tenaga Pendidik</div>
                     </div>
                 </div>
@@ -1173,7 +1196,7 @@
                         <div class="stat-icon">
                             <i class="fas fa-building"></i>
                         </div>
-                        <div class="stat-number">3</div>
+                        <div class="stat-number">{{ $jumlahJurusan }}</div>
                         <div class="stat-text">Program Jurusan</div>
                     </div>
                 </div>
@@ -1183,10 +1206,11 @@
 
     <section id="sejarah-detail" class="section-padding">
         <div class="container">
-            <div class="row mb-5">
+            <div class="row mb-2">
                 <div class="col text-center">
                     <h2 class="section-title center">Sejarah Singkat</h2>
-                    <p class="section-subtitle mx-auto">Perjalanan panjang SMK Muhammadiyah 1 Berbek dalam membangun generasi unggul</p>
+                    <p class="section-subtitle mx-auto">Perjalanan panjang SMK Muhammadiyah 1 Berbek dalam membangun
+                        generasi unggul</p>
                 </div>
             </div>
             <div class="row">
@@ -1197,7 +1221,10 @@
                                 <i class="fas fa-landmark"></i>
                             </div>
                             <h4 class="card-title">Awal Berdiri</h4>
-                            <p class="card-text">SMK Muhammadiyah 1 Berbek didirikan pada tahun 2003 dengan visi untuk memberikan pendidikan kejuruan yang berkualitas bagi masyarakat Kabupaten Nganjuk dan sekitarnya. Pada awal berdirinya, sekolah ini hanya memiliki dua program keahlian dengan jumlah siswa yang terbatas.</p>
+                            <p class="card-text">SMK Muhammadiyah 1 Berbek didirikan pada tahun 2003 dengan visi untuk
+                                memberikan pendidikan kejuruan yang berkualitas bagi masyarakat Kabupaten Nganjuk dan
+                                sekitarnya. Pada awal berdirinya, sekolah ini hanya memiliki dua program keahlian dengan
+                                jumlah siswa yang terbatas.</p>
                         </div>
                     </div>
                 </div>
@@ -1208,7 +1235,10 @@
                                 <i class="fas fa-chart-line"></i>
                             </div>
                             <h4 class="card-title">Perkembangan</h4>
-                            <p class="card-text">Seiring berjalannya waktu, SMK Muhammadiyah 1 Berbek terus berkembang dengan menambah program keahlian dan meningkatkan kualitas pendidikan. Hingga saat ini, sekolah telah memiliki empat program keahlian yang relevan dengan kebutuhan industri dan dunia kerja.</p>
+                            <p class="card-text">Seiring berjalannya waktu, SMK Muhammadiyah 1 Berbek terus berkembang
+                                dengan menambah program keahlian dan meningkatkan kualitas pendidikan. Hingga saat ini,
+                                sekolah telah memiliki empat program keahlian yang relevan dengan kebutuhan industri dan
+                                dunia kerja.</p>
                         </div>
                     </div>
                 </div>
@@ -1219,7 +1249,10 @@
                                 <i class="fas fa-award"></i>
                             </div>
                             <h4 class="card-title">Prestasi</h4>
-                            <p class="card-text">Selama perjalanannya, SMK Muhammadiyah 1 Berbek telah meraih berbagai prestasi baik di tingkat regional maupun nasional. Prestasi tersebut mencakup bidang akademik, non-akademik, dan kompetensi keahlian yang membuktikan kualitas pendidikan yang diberikan.</p>
+                            <p class="card-text">Selama perjalanannya, SMK Muhammadiyah 1 Berbek telah meraih berbagai
+                                prestasi baik di tingkat regional maupun nasional. Prestasi tersebut mencakup bidang
+                                akademik, non-akademik, dan kompetensi keahlian yang membuktikan kualitas pendidikan
+                                yang diberikan.</p>
                         </div>
                     </div>
                 </div>
@@ -1230,7 +1263,9 @@
                                 <i class="fas fa-graduation-cap"></i>
                             </div>
                             <h4 class="card-title">Masa Depan</h4>
-                            <p class="card-text">Dengan komitmen untuk terus berinovasi dan meningkatkan kualitas, SMK Muhammadiyah 1 Berbek bertekad untuk menjadi pusat pendidikan kejuruan unggulan yang menghasilkan lulusan berkompeten, berkarakter, dan siap bersaing di era globalisasi.</p>
+                            <p class="card-text">Dengan komitmen untuk terus berinovasi dan meningkatkan kualitas, SMK
+                                Muhammadiyah 1 Berbek bertekad untuk menjadi pusat pendidikan kejuruan unggulan yang
+                                menghasilkan lulusan berkompeten, berkarakter, dan siap bersaing di era globalisasi.</p>
                         </div>
                     </div>
                 </div>
@@ -1240,7 +1275,7 @@
 
     <section id="visi-misi" class="section-padding bg-light">
         <div class="container">
-            <div class="row mb-5">
+            <div class="row mb-2">
                 <div class="col text-center">
                     <h2 class="section-title center">Visi & Misi</h2>
                     <p class="section-subtitle mx-auto">Pedoman dan arah perjalanan SMK Muhammadiyah 1 Berbek</p>
@@ -1253,16 +1288,25 @@
                             <i class="fas fa-bullseye"></i>
                         </div>
                         <h3 class="mb-4">Visi Sekolah</h3>
-                        <p class="mb-4">"Terwujudnya sekolah yang islami / religius, unggul (kreatif, inovatif, kerja keras, komitmen) dan kompetitif (berani mengambil resiko, motivasi kuat untuk sukses) sebagai pusat pendidikan dan pelatihan untuk menghasilkan tenaga kerja (kerja keras, ulet) tingkat menengah maupun pekerja mandiri (mandiri) dengan integritas IMTAK dan IPTEKS (religius dan kreatif)."</p>
-                        
+                        <p class="mb-4">"Terwujudnya sekolah yang islami / religius, unggul (kreatif, inovatif, kerja
+                            keras, komitmen) dan kompetitif (berani mengambil resiko, motivasi kuat untuk sukses)
+                            sebagai pusat pendidikan dan pelatihan untuk menghasilkan tenaga kerja (kerja keras, ulet)
+                            tingkat menengah maupun pekerja mandiri (mandiri) dengan integritas IMTAK dan IPTEKS
+                            (religius dan kreatif)."</p>
+
                         <h4 class="mb-3">Indikator Visi</h4>
                         <ul class="indikator-list">
                             <li>Sekolah menanamkan perilaku kehidupan yang Islami (religius)</li>
-                            <li>Peserta didik unggul dalam bidang akademik dan non akademik (kreatif, inovatif, kerja keras, pantang menyerah, disiplin, tanggung jawab)</li>
-                            <li>Peserta didik unggul dalam bidang kompetensi keahlian (kreatif, inovatif, kerja keras, pantang menyerah, disiplin, tanggung jawab)</li>
-                            <li>Guru unggul dalam inovasi pembelajaran (kreatif inovatif, kerja keras, pantang menyerah, disiplin, tanggung jawab)</li>
-                            <li>Sekolah mampu menghasilkan output yang mampu bersaing dengan sekolah lainnya (berani mengambil resiko, motivasi kuat untuk sukses)</li>
-                            <li>Sekolah mampu menghasilkan output sebagai tenaga kerja tingkat menengah (kerja keras, ulet)</li>
+                            <li>Peserta didik unggul dalam bidang akademik dan non akademik (kreatif, inovatif, kerja
+                                keras, pantang menyerah, disiplin, tanggung jawab)</li>
+                            <li>Peserta didik unggul dalam bidang kompetensi keahlian (kreatif, inovatif, kerja keras,
+                                pantang menyerah, disiplin, tanggung jawab)</li>
+                            <li>Guru unggul dalam inovasi pembelajaran (kreatif inovatif, kerja keras, pantang menyerah,
+                                disiplin, tanggung jawab)</li>
+                            <li>Sekolah mampu menghasilkan output yang mampu bersaing dengan sekolah lainnya (berani
+                                mengambil resiko, motivasi kuat untuk sukses)</li>
+                            <li>Sekolah mampu menghasilkan output sebagai tenaga kerja tingkat menengah (kerja keras,
+                                ulet)</li>
                             <li>Sekolah mampu menghasilkan output sebagai pekerja mandiri (mandiri)</li>
                         </ul>
                     </div>
@@ -1276,15 +1320,20 @@
                         <ul class="indikator-list">
                             <li>Membina pembiasaan implementasi ajaran Islam dalam kehidupan sehari-hari.</li>
                             <li>Mewujudkan dokumentasi kurikulum yang lengkap dan mutakir.</li>
-                            <li>Melaksanakan program pembelajaran dengan budaya mengajar sampai bisa, melatih sampai terampil, dan mendidik sampai baik.</li>
-                            <li>Melaksanakan pembelajaran aktif, inovatif, kreatif, efektif, menyenangkan, gembira, dan berbobot.</li>
+                            <li>Melaksanakan program pembelajaran dengan budaya mengajar sampai bisa, melatih sampai
+                                terampil, dan mendidik sampai baik.</li>
+                            <li>Melaksanakan pembelajaran aktif, inovatif, kreatif, efektif, menyenangkan, gembira, dan
+                                berbobot.</li>
                             <li>Melaksanakan pendampingan kepada lulusan sampai bekerja atau kuliah.</li>
                         </ul>
-                        
+
                         <h4 class="mb-3 mt-4">Tujuan Sekolah</h4>
                         <ul class="indikator-list">
-                            <li>Menghasilkan tamatan yang kuat imannya, kompeten di bidangnya, siap pakai / berkembang, mampu berwirausaha, taat beribadah, dan berakhlaq mulia.</li>
-                            <li>Menghasilkan tamatan yang mampu berperan serta dalam kegiatan pembangunan sesuai dengan bidangnya, menyesuaikan diri dengan lingkungannya, dan selalu mengembangkan potensi dirinya sesuai tuntutan pasar kerja dan tantangan zamannya.</li>
+                            <li>Menghasilkan tamatan yang kuat imannya, kompeten di bidangnya, siap pakai / berkembang,
+                                mampu berwirausaha, taat beribadah, dan berakhlaq mulia.</li>
+                            <li>Menghasilkan tamatan yang mampu berperan serta dalam kegiatan pembangunan sesuai dengan
+                                bidangnya, menyesuaikan diri dengan lingkungannya, dan selalu mengembangkan potensi
+                                dirinya sesuai tuntutan pasar kerja dan tantangan zamannya.</li>
                         </ul>
                     </div>
                 </div>
@@ -1294,7 +1343,7 @@
 
     <section id="struktur" class="section-padding">
         <div class="container">
-            <div class="row mb-5">
+            <div class="row mb-2">
                 <div class="col text-center">
                     <h2 class="section-title center">Struktur Organisasi</h2>
                     <p class="section-subtitle mx-auto">Tata kelola dan kepemimpinan SMK Muhammadiyah 1 Berbek</p>
@@ -1304,8 +1353,10 @@
                 <div class="col-12">
                     <div class="struktur-container">
                         <h3 class="mb-4">Struktur Organisasi SMK Muhammadiyah 1 Berbek</h3>
-                        <img src="{{ asset('images/profil/struktur.jpg') }}" alt="Struktur Organisasi" class="struktur-img">
-                        <p class="mt-4">Struktur organisasi yang jelas dan terarah untuk mendukung efektivitas proses pendidikan dan administrasi sekolah.</p>
+                        <img src="{{ asset('images/profil/struktur.jpg') }}" alt="Struktur Organisasi"
+                            class="struktur-img">
+                        <p class="mt-4">Struktur organisasi yang jelas dan terarah untuk mendukung efektivitas proses
+                            pendidikan dan administrasi sekolah.</p>
                     </div>
                 </div>
             </div>
@@ -1321,94 +1372,31 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="teacher-card">
-                        <img src="{{ asset('images/guru/default.jpg') }}" class="card-img-top teacher-img" alt="Nama Guru">
-                        <div class="card-body">
-                            <h5 class="card-title">Dr. Ahmad Fauzi, M.Pd.</h5>
-                            <h6 class="card-subtitle">Kepala Sekolah</h6>
-                            <p class="card-text">Memimpin SMK Muhammadiyah 1 Berbek dengan visi yang jelas dan komitmen terhadap peningkatan kualitas pendidikan.</p>
-                            <div class="teacher-contact">
-                                <a href="#"><i class="fab fa-whatsapp"></i></a>
-                                <a href="#"><i class="fas fa-envelope"></i></a>
+                @forelse($pengajars as $pengajar)
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="teacher-card">
+                            <img src="{{ $pengajar->foto_pengajar_url }}" class="card-img-top teacher-img"
+                                alt="{{ $pengajar->nama_pengajar }}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $pengajar->nama_pengajar }}</h5>
+                                <h6 class="card-subtitle">{{ $pengajar->jabatan }}</h6>
+                                @if ($pengajar->nip)
+                                    <p class="card-text">{{ $pengajar->nip }}</p>
+                                @endif
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="teacher-card">
-                        <img src="{{ asset('images/guru/default.jpg') }}" class="card-img-top teacher-img" alt="Nama Guru">
-                        <div class="card-body">
-                            <h5 class="card-title">Drs. Budi Santoso, M.T.</h5>
-                            <h6 class="card-subtitle">Wakil Kepala Sekolah</h6>
-                            <p class="card-text">Bertanggung jawab dalam bidang kurikulum dan pengembangan pembelajaran di sekolah.</p>
-                            <div class="teacher-contact">
-                                <a href="#"><i class="fab fa-whatsapp"></i></a>
-                                <a href="#"><i class="fas fa-envelope"></i></a>
-                            </div>
-                        </div>
+                @empty
+                    <div class="col-12 text-center">
+                        <p class="text-muted">Data tenaga pendidik belum tersedia.</p>
                     </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="teacher-card">
-                        <img src="{{ asset('images/guru/default.jpg') }}" class="card-img-top teacher-img" alt="Nama Guru">
-                        <div class="card-body">
-                            <h5 class="card-title">Siti Aminah, S.Pd.</h5>
-                            <h6 class="card-subtitle">Guru Matematika</h6>
-                            <p class="card-text">Mengajar matematika dengan pendekatan yang menyenangkan dan mudah dipahami oleh siswa.</p>
-                            <div class="teacher-contact">
-                                <a href="#"><i class="fab fa-whatsapp"></i></a>
-                                <a href="#"><i class="fas fa-envelope"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="teacher-card">
-                        <img src="{{ asset('images/guru/default.jpg') }}" class="card-img-top teacher-img" alt="Nama Guru">
-                        <div class="card-body">
-                            <h5 class="card-title">Rina Wijaya, S.Kom.</h5>
-                            <h6 class="card-subtitle">Guru TKJ</h6>
-                            <p class="card-text">Ahli dalam bidang teknologi informasi dengan pengalaman mengajar lebih dari 10 tahun.</p>
-                            <div class="teacher-contact">
-                                <a href="#"><i class="fab fa-whatsapp"></i></a>
-                                <a href="#"><i class="fas fa-envelope"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="teacher-card">
-                        <img src="{{ asset('images/guru/default.jpg') }}" class="card-img-top teacher-img" alt="Nama Guru">
-                        <div class="card-body">
-                            <h5 class="card-title">Joko Prasetyo, S.Pd.</h5>
-                            <h6 class="card-subtitle">Guru Otomotif</h6>
-                            <p class="card-text">Berpengalaman di industri otomotif sebelum beralih menjadi pengajar di sekolah.</p>
-                            <div class="teacher-contact">
-                                <a href="#"><i class="fab fa-whatsapp"></i></a>
-                                <a href="#"><i class="fas fa-envelope"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="teacher-card">
-                        <img src="{{ asset('images/guru/default.jpg') }}" class="card-img-top teacher-img" alt="Nama Guru">
-                        <div class="card-body">
-                            <h5 class="card-title">Dewi Sartika, S.Pd.</h5>
-                            <h6 class="card-subtitle">Guru Akuntansi</h6>
-                            <p class="card-text">Membimbing siswa dalam memahami konsep akuntansi dan penerapannya di dunia kerja.</p>
-                            <div class="teacher-contact">
-                                <a href="#"><i class="fab fa-whatsapp"></i></a>
-                                <a href="#"><i class="fas fa-envelope"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforelse
             </div>
-            <div class="text-center mt-4">
-                <a href="#" class="btn btn-primary btn-lg">Lihat Semua Tenaga Pendidik</a>
-            </div>
+            @if ($pengajars->count() > 0)
+                <div class="text-center mt-4">
+                    <a href="#" class="btn btn-primary btn-lg">Lihat Semua Tenaga Pendidik</a>
+                </div>
+            @endif
         </div>
     </section>
 
@@ -1432,11 +1420,16 @@
                 <div class="col-lg-2 col-md-6 mb-5">
                     <h5 class="footer-heading">Tautan Cepat</h5>
                     <ul class="list-unstyled footer-links">
-                        <li><a href="{{ route('landing-page') }}"><i class="fas fa-chevron-right"></i> Beranda</a></li>
-                        <li><a href="{{ route('profil') }}"><i class="fas fa-chevron-right"></i> Profil Sekolah</a></li>
-                        <li><a href="{{ route('landing-page') }}#jurusan"><i class="fas fa-chevron-right"></i> Program Jurusan</a></li>
-                        <li><a href="{{ route('landing-page') }}#fasilitas"><i class="fas fa-chevron-right"></i> Fasilitas</a></li>
-                        <li><a href="{{ route('landing-page') }}#ppdb"><i class="fas fa-chevron-right"></i> PPDB</a></li>
+                        <li><a href="{{ route('landing-page') }}"><i class="fas fa-chevron-right"></i> Beranda</a>
+                        </li>
+                        <li><a href="{{ route('profil') }}"><i class="fas fa-chevron-right"></i> Profil Sekolah</a>
+                        </li>
+                        <li><a href="{{ route('landing-page') }}#jurusan"><i class="fas fa-chevron-right"></i>
+                                Program Jurusan</a></li>
+                        <li><a href="{{ route('landing-page') }}#fasilitas"><i class="fas fa-chevron-right"></i>
+                                Fasilitas</a></li>
+                        <li><a href="{{ route('landing-page') }}#ppdb"><i class="fas fa-chevron-right"></i> PPDB</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-6 mb-5">

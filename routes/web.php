@@ -10,13 +10,13 @@ use App\Http\Controllers\ManajemenJurusanController;
 use App\Http\Controllers\ManajemenTenagaPendidikController;
 use App\Http\Controllers\ManajemenGalleryController;
 use App\Http\Controllers\ManajemenAdminController;
+use App\Http\Controllers\PrestasiController;
+use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\SettingsController;
 
 Route::get('/', [IndexController::class, 'index'])->name('landing-page');
-
-Route::get('/profil-sekolah', function () {
-    return view('profil');
-})->name('profil');
+Route::get('/profil', [ProfilController::class, 'index'])->name('profil');
+Route::get('/prestasi', [PrestasiController::class, 'index'])->name('prestasi');
 
 // Auth Routes
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
