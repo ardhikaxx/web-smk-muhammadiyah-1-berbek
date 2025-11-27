@@ -5,6 +5,7 @@ use App\Http\Controllers\IndexController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ManajemenBannerController;
 use App\Http\Controllers\ManajemenFasilitasController;
+use App\Http\Controllers\ManajemenTenagaPendidikController;
 use App\Http\Controllers\ManajemenGalleryController;
 use App\Http\Controllers\ManajemenAdminController;
 use App\Http\Controllers\SettingsController;
@@ -19,10 +20,6 @@ Route::get('/profil-sekolah', function () {
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('auth.login.submit');
 Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
-
-// Optional: Registration routes (bisa dihapus setelah admin pertama dibuat)
-// Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('auth.register');
-// Route::post('/register', [AuthController::class, 'register'])->name('auth.register.submit');
 
 Route::middleware(['auth:admin'])->group(function () {
     Route::get('/admin/current', [AuthController::class, 'getCurrentAdmin'])->name('admin.current');
@@ -46,6 +43,14 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::put('/admin/manajemen-fasilitas/{fasilitas}', [ManajemenFasilitasController::class, 'update'])->name('admin.manajemen-fasilitas.update');
     Route::delete('/admin/manajemen-fasilitas/{fasilitas}', [ManajemenFasilitasController::class, 'destroy'])->name('admin.manajemen-fasilitas.destroy');
     Route::patch('/admin/manajemen-fasilitas/{fasilitas}/status', [ManajemenFasilitasController::class, 'updateStatus'])->name('admin.manajemen-fasilitas.status');
+    
+    // Manajemen Tenaga Pendidik Routes
+    Route::get('/admin/tenaga-pendidik', [ManajemenTenagaPendidikController::class, 'index'])->name('admin.tenaga-pendidik.index');
+    Route::post('/admin/tenaga-pendidik', [ManajemenTenagaPendidikController::class, 'store'])->name('admin.tenaga-pendidik.store');
+    Route::get('/admin/tenaga-pendidik/{pengajar}', [ManajemenTenagaPendidikController::class, 'show'])->name('admin.tenaga-pendidik.show');
+    Route::put('/admin/tenaga-pendidik/{pengajar}', [ManajemenTenagaPendidikController::class, 'update'])->name('admin.tenaga-pendidik.update');
+    Route::delete('/admin/tenaga-pendidik/{pengajar}', [ManajemenTenagaPendidikController::class, 'destroy'])->name('admin.tenaga-pendidik.destroy');
+    Route::patch('/admin/tenaga-pendidik/{pengajar}/status', [ManajemenTenagaPendidikController::class, 'updateStatus'])->name('admin.tenaga-pendidik.status');
 
     // Manajemen Gallery Routes
     Route::get('/admin/manajemen-gallery', [ManajemenGalleryController::class, 'index'])->name('admin.manajemen-gallery.index');

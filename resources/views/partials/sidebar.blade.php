@@ -45,7 +45,8 @@
         </li>
 
         <li class="sidebar-item">
-            <a href="#" class="sidebar-link">
+            <a href="{{ route('admin.tenaga-pendidik.index') }}"
+                class="sidebar-link {{ Request::routeIs('admin.tenaga-pendidik.*') ? 'active' : '' }}">
                 <i class="fas fa-chalkboard-teacher"></i>
                 <span>Tenaga Pendidik</span>
             </a>
