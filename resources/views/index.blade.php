@@ -1546,42 +1546,59 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4 mb-4">
-                    <div class="gallery-item">
-                        <img src="{{ asset('images/gallery/g1.jpg') }}" alt="Praktikum Lab">
-                        <div class="gallery-overlay">
-                            <div class="gallery-text">
-                                <h5>Praktikum Lab Komputer</h5>
-                                <p>Kegiatan praktikum jaringan komputer</p>
+                @if ($galleries->count() > 0)
+                    @foreach ($galleries as $gallery)
+                        <div class="col-md-4 mb-4">
+                            <div class="gallery-item">
+                                <img src="{{ $gallery->foto_gallery_url }}" alt="{{ $gallery->nama_gallery }}">
+                                <div class="gallery-overlay">
+                                    <div class="gallery-text">
+                                        <h5>{{ $gallery->nama_gallery }}</h5>
+                                        <p>{{ $gallery->deskripsi_gallery }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                @else
+                    <!-- Fallback jika tidak ada gallery aktif -->
+                    <div class="col-md-4 mb-4">
+                        <div class="gallery-item">
+                            <img src="{{ asset('images/gallery/g1.jpg') }}" alt="Praktikum Lab">
+                            <div class="gallery-overlay">
+                                <div class="gallery-text">
+                                    <h5>Praktikum Lab Komputer</h5>
+                                    <p>Kegiatan praktikum jaringan komputer</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="gallery-item">
-                        <img src="{{ asset('images/gallery/g2.jpg') }}">
-                        <div class="gallery-overlay">
-                            <div class="gallery-text">
-                                <h5>Kegiatan Ekstrakurikuler</h5>
-                                <p>Latihan pramuka di lapangan sekolah</p>
+                    <div class="col-md-4 mb-4">
+                        <div class="gallery-item">
+                            <img src="{{ asset('images/gallery/g2.jpg') }}" alt="Ekstrakurikuler">
+                            <div class="gallery-overlay">
+                                <div class="gallery-text">
+                                    <h5>Kegiatan Ekstrakurikuler</h5>
+                                    <p>Latihan pramuka di lapangan sekolah</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="gallery-item">
-                        <img src="{{ asset('images/gallery/g3.jpg') }}" alt="Upacara Bendera">
-                        <div class="gallery-overlay">
-                            <div class="gallery-text">
-                                <h5>Upacara Bendera</h5>
-                                <p>Kegiatan upacara bendera setiap hari Senin</p>
+                    <div class="col-md-4 mb-4">
+                        <div class="gallery-item">
+                            <img src="{{ asset('images/gallery/g3.jpg') }}" alt="Upacara Bendera">
+                            <div class="gallery-overlay">
+                                <div class="gallery-text">
+                                    <h5>Upacara Bendera</h5>
+                                    <p>Kegiatan upacara bendera setiap hari Senin</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                @endif
             </div>
             <div class="text-center mt-4">
-                <a href="#" class="btn btn-primary btn-lg">Lihat Galeri Lengkap</a>
+                <a href="" class="btn btn-primary btn-lg">Lihat Galeri Lengkap</a>
             </div>
         </div>
     </section>
