@@ -42,7 +42,7 @@ class Pengajar extends Model
         if ($this->foto_pengajar) {
             return asset('images/guru/' . $this->foto_pengajar);
         }
-        return asset('images/guru/default.jpg');
+        return asset('images/default-img.png');
     }
 
     /**

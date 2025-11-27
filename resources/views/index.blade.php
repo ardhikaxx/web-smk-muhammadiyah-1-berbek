@@ -1214,25 +1214,16 @@
                                         aria-label="Slide 2"></button>
                                     <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"
                                         aria-label="Slide 3"></button>
-                                    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="3"
-                                        aria-label="Slide 4"></button>
                                 </div>
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                        <img src="{{ asset('images/hero/hero1.jpg') }}" class="d-block w-100"
-                                            alt="Gedung Sekolah">
+                                        <img src="{{ asset('images/default-img.png') }}" class="d-block w-100" alt="default">
                                     </div>
                                     <div class="carousel-item">
-                                        <img src="{{ asset('images/hero/hero2.jpg') }}" class="d-block w-100"
-                                            alt="Kegiatan Belajar">
+                                        <img src="{{ asset('images/default-img.png') }}" class="d-block w-100" alt="default">
                                     </div>
                                     <div class="carousel-item">
-                                        <img src="{{ asset('images/hero/hero3.jpg') }}" class="d-block w-100"
-                                            alt="Laboratorium Komputer">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="{{ asset('images/hero/hero4.jpg') }}" class="d-block w-100"
-                                            alt="Bengkel Otomotif">
+                                        <img src="{{ asset('images/default-img.png') }}" class="d-block w-100" alt="default">
                                     </div>
                                 </div>
                             @endif
@@ -1402,7 +1393,7 @@
                     <!-- Fallback jika tidak ada fasilitas aktif -->
                     <div class="col-md-6 col-lg-4 mb-4">
                         <div class="card facility-card">
-                            <img src="{{ asset('images/fasilitas/kelas.jpg') }}" class="card-img-top"
+                            <img src="{{ asset('images/default-img.png') }}" class="card-img-top"
                                 alt="Ruang Kelas">
                             <div class="facility-overlay">
                                 <h5 class="card-title text-white">Ruang Kelas Nyaman</h5>
@@ -1414,7 +1405,7 @@
                     </div>
                     <div class="col-md-6 col-lg-4 mb-4">
                         <div class="card facility-card">
-                            <img src="{{ asset('images/fasilitas/lab-kom.jpg') }}" class="card-img-top"
+                            <img src="{{ asset('images/default-img.png') }}" class="card-img-top"
                                 alt="Laboratorium Komputer">
                             <div class="facility-overlay">
                                 <h5 class="card-title text-white">Laboratorium Komputer</h5>
@@ -1425,7 +1416,7 @@
                     </div>
                     <div class="col-md-6 col-lg-4 mb-4">
                         <div class="card facility-card">
-                            <img src="{{ asset('images/fasilitas/bengkel.jpg') }}" class="card-img-top"
+                            <img src="{{ asset('images/default-img.png') }}" class="card-img-top"
                                 alt="Bengkel Otomotif">
                             <div class="facility-overlay">
                                 <h5 class="card-title text-white">Bengkel Otomotif</h5>
@@ -1561,10 +1552,9 @@
                         </div>
                     @endforeach
                 @else
-                    <!-- Fallback jika tidak ada gallery aktif -->
                     <div class="col-md-4 mb-4">
                         <div class="gallery-item">
-                            <img src="{{ asset('images/gallery/g1.jpg') }}" alt="Praktikum Lab">
+                            <img src="{{ asset('images/default-img.png') }}" alt="Praktikum Lab">
                             <div class="gallery-overlay">
                                 <div class="gallery-text">
                                     <h5>Praktikum Lab Komputer</h5>
@@ -1575,7 +1565,7 @@
                     </div>
                     <div class="col-md-4 mb-4">
                         <div class="gallery-item">
-                            <img src="{{ asset('images/gallery/g2.jpg') }}" alt="Ekstrakurikuler">
+                            <img src="{{ asset('images/default-img.png') }}" alt="Ekstrakurikuler">
                             <div class="gallery-overlay">
                                 <div class="gallery-text">
                                     <h5>Kegiatan Ekstrakurikuler</h5>
@@ -1586,7 +1576,7 @@
                     </div>
                     <div class="col-md-4 mb-4">
                         <div class="gallery-item">
-                            <img src="{{ asset('images/gallery/g3.jpg') }}" alt="Upacara Bendera">
+                            <img src="{{ asset('images/default-img.png') }}" alt="Upacara Bendera">
                             <div class="gallery-overlay">
                                 <div class="gallery-text">
                                     <h5>Upacara Bendera</h5>

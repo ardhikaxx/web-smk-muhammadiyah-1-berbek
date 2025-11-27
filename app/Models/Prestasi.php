@@ -34,7 +34,7 @@ class Prestasi extends Model
         if ($this->foto_prestasi) {
             return asset('images/prestasi/' . $this->foto_prestasi);
         }
-        return asset('images/prestasi/default.jpg');
+        return asset('images/default-img.png');
     }
 
     /**
