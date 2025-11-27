@@ -516,3 +516,133 @@ body {
         transform: translateY(0);
     }
 }
+
+
+.dropdown-toggle::after {
+    display: none !important;
+}
+
+.sidebar-item.has-dropdown {
+    position: relative;
+}
+
+.sidebar-link.dropdown-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.dropdown-arrow {
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+    margin-left: auto;
+}
+
+.sidebar-item.has-dropdown.active .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+.sidebar-dropdown {
+    list-style: none;
+    text-decoration: none;
+    padding-left: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, opacity 0.3s ease;
+    opacity: 0;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-dropdown.show {
+    max-height: 500px;
+    opacity: 1;
+}
+
+.sidebar-dropdown .sidebar-link {
+    padding-left: 60px;
+    font-size: 0.9rem;
+    border-left: none;
+    position: relative;
+}
+
+.sidebar-dropdown .sidebar-link::before {
+    content: '';
+    position: absolute;
+    left: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+}
+
+.sidebar-dropdown .sidebar-link.active::before {
+    background: white;
+}
+
+.sidebar-item.has-dropdown.active > .sidebar-link {
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    border-left-color: white;
+}
+
+@media (max-width: 991.98px) {
+    .sidebar {
+        height: 100vh;
+        overflow-y: auto;
+    }
+    
+    .sidebar-dropdown .sidebar-link {
+        padding-left: 50px;
+    }
+    
+    .sidebar-dropdown .sidebar-link::before {
+        left: 30px;
+    }
+}
+
+.sidebar {
+    transition: transform 0.3s ease, width 0.3s ease;
+}
+
+.mobile-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.mobile-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.sidebar-menu {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+}
+
+.sidebar-menu::-webkit-scrollbar {
+    width: 4px;
+}
+
+.sidebar-menu::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.sidebar-menu::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+}
+
+.sidebar-menu::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+}

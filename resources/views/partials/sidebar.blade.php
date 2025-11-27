@@ -14,68 +14,82 @@
             </a>
         </li>
 
-        <li class="sidebar-item">
-            <a href="{{ route('admin.manajemen-banner.index') }}"
-                class="sidebar-link {{ Request::routeIs('admin.manajemen-banner.*') ? 'active' : '' }}">
-                <i class="fas fa-image"></i>
-                <span>Manajemen Banner</span>
+        <!-- Dropdown Manajemen Konten -->
+        <li class="sidebar-item has-dropdown">
+            <a href="#" class="sidebar-link dropdown-toggle">
+                <i class="fas fa-cogs"></i>
+                <span>Manajemen Konten</span>
+                <i class="fas fa-chevron-down dropdown-arrow"></i>
             </a>
+            <ul class="sidebar-dropdown">
+                <li class="sidebar-item">
+                    <a href="{{ route('admin.manajemen-banner.index') }}"
+                        class="sidebar-link {{ Request::routeIs('admin.manajemen-banner.*') ? 'active' : '' }}">
+                        <i class="fas fa-image"></i>
+                        <span>Banner</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="{{ route('admin.manajemen-pengumuman.index') }}"
+                        class="sidebar-link {{ Request::routeIs('admin.manajemen-pengumuman.*') ? 'active' : '' }}">
+                        <i class="fas fa-bullhorn"></i>
+                        <span>Pengumuman</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="{{ route('admin.manajemen-fasilitas.index') }}"
+                        class="sidebar-link {{ Request::routeIs('admin.manajemen-fasilitas.*') ? 'active' : '' }}">
+                        <i class="fas fa-building"></i>
+                        <span>Fasilitas</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="{{ route('admin.manajemen-prestasi.index') }}"
+                        class="sidebar-link {{ Request::routeIs('admin.manajemen-prestasi.*') ? 'active' : '' }}">
+                        <i class="fas fa-trophy"></i>
+                        <span>Prestasi</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="{{ route('admin.manajemen-jurusan.index') }}"
+                        class="sidebar-link {{ Request::routeIs('admin.manajemen-jurusan.*') ? 'active' : '' }}">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>Jurusan</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="{{ route('admin.manajemen-gallery.index') }}"
+                        class="sidebar-link {{ Request::routeIs('admin.manajemen-gallery.*') ? 'active' : '' }}">
+                        <i class="fas fa-images"></i>
+                        <span>Gallery</span>
+                    </a>
+                </li>
+            </ul>
         </li>
 
-        <li class="sidebar-item">
-            <a href="{{ route('admin.manajemen-pengumuman.index') }}"
-                class="sidebar-link {{ Request::routeIs('admin.manajemen-pengumuman.*') ? 'active' : '' }}">
-                <i class="fas fa-bullhorn"></i>
-                <span>Manajemen Pengumuman</span>
+        <!-- Dropdown Manajemen User -->
+        <li class="sidebar-item has-dropdown">
+            <a href="#" class="sidebar-link dropdown-toggle">
+                <i class="fas fa-users"></i>
+                <span>Manajemen User</span>
+                <i class="fas fa-chevron-down dropdown-arrow"></i>
             </a>
-        </li>
-
-        <li class="sidebar-item">
-            <a href="{{ route('admin.manajemen-fasilitas.index') }}"
-                class="sidebar-link {{ Request::routeIs('admin.manajemen-fasilitas.*') ? 'active' : '' }}">
-                <i class="fas fa-building"></i>
-                <span>Manajemen Fasilitas</span>
-            </a>
-        </li>
-
-        <li class="sidebar-item">
-            <a href="{{ route('admin.manajemen-prestasi.index') }}"
-                class="sidebar-link {{ Request::routeIs('admin.manajemen-prestasi.*') ? 'active' : '' }}">
-                <i class="fas fa-trophy"></i>
-                <span>Manajemen Prestasi</span>
-            </a>
-        </li>
-
-        <li class="sidebar-item">
-            <a href="{{ route('admin.manajemen-jurusan.index') }}"
-                class="sidebar-link {{ Request::routeIs('admin.manajemen-jurusan.*') ? 'active' : '' }}">
-                <i class="fas fa-graduation-cap"></i>
-                <span>Manajemen Jurusan</span>
-            </a>
-        </li>
-
-        <li class="sidebar-item">
-            <a href="{{ route('admin.tenaga-pendidik.index') }}"
-                class="sidebar-link {{ Request::routeIs('admin.tenaga-pendidik.*') ? 'active' : '' }}">
-                <i class="fas fa-chalkboard-teacher"></i>
-                <span>Tenaga Pendidik</span>
-            </a>
-        </li>
-
-        <li class="sidebar-item">
-            <a href="{{ route('admin.manajemen-gallery.index') }}"
-                class="sidebar-link {{ Request::routeIs('admin.manajemen-gallery.*') ? 'active' : '' }}">
-                <i class="fas fa-images"></i>
-                <span>Manajemen Gallery</span>
-            </a>
-        </li>
-
-        <li class="sidebar-item">
-            <a href="{{ route('admin.manajemen-admin.index') }}"
-                class="sidebar-link {{ Request::routeIs('admin.manajemen-admin.*') ? 'active' : '' }}">
-                <i class="fas fa-users-cog"></i>
-                <span>Manajemen Admin</span>
-            </a>
+            <ul class="sidebar-dropdown">
+                <li class="sidebar-item">
+                    <a href="{{ route('admin.tenaga-pendidik.index') }}"
+                        class="sidebar-link {{ Request::routeIs('admin.tenaga-pendidik.*') ? 'active' : '' }}">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <span>Tenaga Pendidik</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="{{ route('admin.manajemen-admin.index') }}"
+                        class="sidebar-link {{ Request::routeIs('admin.manajemen-admin.*') ? 'active' : '' }}">
+                        <i class="fas fa-users-cog"></i>
+                        <span>Admin</span>
+                    </a>
+                </li>
+            </ul>
         </li>
 
         <li class="sidebar-item">

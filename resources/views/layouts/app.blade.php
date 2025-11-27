@@ -8,7 +8,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="shortcut icon" href="{{ asset('images/logo-single.png') }}" type="image/x-icon">
 
@@ -73,19 +75,69 @@
                 }
             });
 
-            const dropdownLinks = document.querySelectorAll('.sidebar-link[data-bs-toggle="dropdown"]');
+            // Dropdown functionality for sidebar
+            const dropdownToggles = document.querySelectorAll('.sidebar-link.dropdown-toggle');
 
-            dropdownLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
+            dropdownToggles.forEach(toggle => {
+                toggle.addEventListener('click', function(e) {
                     e.preventDefault();
+                    const parentItem = this.parentElement;
                     const dropdown = this.nextElementSibling;
+                    const arrow = this.querySelector('.dropdown-arrow');
+
+                    // Close other dropdowns
+                    document.querySelectorAll('.sidebar-item.has-dropdown').forEach(item => {
+                        if (item !== parentItem) {
+                            item.classList.remove('active');
+                            item.querySelector('.sidebar-dropdown').classList.remove(
+                            'show');
+                            const otherArrow = item.querySelector('.dropdown-arrow');
+                            if (otherArrow) {
+                                otherArrow.style.transform = 'rotate(0deg)';
+                            }
+                        }
+                    });
+
+                    // Toggle current dropdown
+                    parentItem.classList.toggle('active');
                     dropdown.classList.toggle('show');
 
-                    const chevron = this.querySelector('.fa-chevron-down');
-                    if (chevron) {
-                        chevron.classList.toggle('fa-rotate-180');
+                    if (arrow) {
+                        arrow.style.transform = parentItem.classList.contains('active') ?
+                            'rotate(180deg)' :
+                            'rotate(0deg)';
                     }
                 });
+            });
+
+            document.querySelectorAll('.sidebar-dropdown .sidebar-link.active').forEach(activeLink => {
+                const dropdown = activeLink.closest('.sidebar-dropdown');
+                const parentItem = dropdown?.parentElement;
+
+                if (dropdown && parentItem) {
+                    parentItem.classList.add('active');
+                    dropdown.classList.add('show');
+                    const arrow = parentItem.querySelector('.dropdown-arrow');
+                    if (arrow) {
+                        arrow.style.transform = 'rotate(180deg)';
+                    }
+                }
+            });
+
+            // Close dropdowns when clicking outside on mobile
+            document.addEventListener('click', function(e) {
+                if (window.innerWidth <= 991.98) {
+                    if (!e.target.closest('.sidebar')) {
+                        document.querySelectorAll('.sidebar-item.has-dropdown').forEach(item => {
+                            item.classList.remove('active');
+                            item.querySelector('.sidebar-dropdown').classList.remove('show');
+                            const arrow = item.querySelector('.dropdown-arrow');
+                            if (arrow) {
+                                arrow.style.transform = 'rotate(0deg)';
+                            }
+                        });
+                    }
+                }
             });
 
             const profileBtn = document.querySelector('.profile-btn');
@@ -140,9 +192,7 @@
                     console.error('Error loading admin data:', error);
                 });
         }
-    </script>
 
-    <script>
         function confirmLogout() {
             Swal.fire({
                 title: 'Konfirmasi Logout',
