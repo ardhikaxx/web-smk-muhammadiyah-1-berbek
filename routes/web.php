@@ -5,6 +5,7 @@ use App\Http\Controllers\IndexController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ManajemenBannerController;
 use App\Http\Controllers\ManajemenFasilitasController;
+use App\Http\Controllers\ManajemenJurusanController;
 use App\Http\Controllers\ManajemenTenagaPendidikController;
 use App\Http\Controllers\ManajemenGalleryController;
 use App\Http\Controllers\ManajemenAdminController;
@@ -43,6 +44,14 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::put('/admin/manajemen-fasilitas/{fasilitas}', [ManajemenFasilitasController::class, 'update'])->name('admin.manajemen-fasilitas.update');
     Route::delete('/admin/manajemen-fasilitas/{fasilitas}', [ManajemenFasilitasController::class, 'destroy'])->name('admin.manajemen-fasilitas.destroy');
     Route::patch('/admin/manajemen-fasilitas/{fasilitas}/status', [ManajemenFasilitasController::class, 'updateStatus'])->name('admin.manajemen-fasilitas.status');
+
+    // Manajemen Jurusan Routes
+    Route::get('/admin/manajemen-jurusan', [ManajemenJurusanController::class, 'index'])->name('admin.manajemen-jurusan.index');
+    Route::post('/admin/manajemen-jurusan', [ManajemenJurusanController::class, 'store'])->name('admin.manajemen-jurusan.store');
+    Route::get('/admin/manajemen-jurusan/{jurusan}', [ManajemenJurusanController::class, 'show'])->name('admin.manajemen-jurusan.show');
+    Route::put('/admin/manajemen-jurusan/{jurusan}', [ManajemenJurusanController::class, 'update'])->name('admin.manajemen-jurusan.update');
+    Route::delete('/admin/manajemen-jurusan/{jurusan}', [ManajemenJurusanController::class, 'destroy'])->name('admin.manajemen-jurusan.destroy');
+    Route::patch('/admin/manajemen-jurusan/{jurusan}/status', [ManajemenJurusanController::class, 'updateStatus'])->name('admin.manajemen-jurusan.status');
     
     // Manajemen Tenaga Pendidik Routes
     Route::get('/admin/tenaga-pendidik', [ManajemenTenagaPendidikController::class, 'index'])->name('admin.tenaga-pendidik.index');

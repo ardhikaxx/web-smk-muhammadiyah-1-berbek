@@ -38,7 +38,8 @@
         </li>
 
         <li class="sidebar-item">
-            <a href="#" class="sidebar-link">
+            <a href="{{ route('admin.manajemen-jurusan.index') }}"
+                class="sidebar-link {{ Request::routeIs('admin.manajemen-jurusan.*') ? 'active' : '' }}">
                 <i class="fas fa-graduation-cap"></i>
                 <span>Manajemen Jurusan</span>
             </a>
