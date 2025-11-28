@@ -255,7 +255,7 @@
             position: absolute;
             top: 15px;
             right: 15px;
-            background: var(--primary-light);
+            background: var(--gradient);
             color: white;
             padding: 8px 15px;
             border-radius: 50px;
@@ -340,25 +340,24 @@
             position: absolute;
             top: 25px;
             right: 30px;
-            background: rgba(255, 255, 255, 0.2);
             border-radius: 50%;
             width: 36px;
             height: 36px;
             display: flex;
             align-items: center;
             justify-content: center;
-            opacity: 0.9;
+            background: #ffff;
+            opacity: 1;
             transition: var(--transition);
             padding: 0;
             border: none;
-            color: white;
+            color: var(--primary);
             font-size: 1.2rem;
         }
 
         .prestasi-modal .btn-close:hover {
             opacity: 1;
             transform: rotate(90deg);
-            background: rgba(255, 255, 255, 0.3);
         }
 
         .prestasi-modal .modal-body {
@@ -388,7 +387,7 @@
             position: absolute;
             top: 15px;
             right: 15px;
-            background: var(--primary-light);
+            background: var(--gradient);
             color: white;
             padding: 8px 16px;
             border-radius: 50px;
