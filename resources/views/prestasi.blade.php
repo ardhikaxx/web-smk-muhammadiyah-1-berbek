@@ -19,6 +19,8 @@
             --primary-dark: #004d99;
             --primary-light: #4d94ff;
             --secondary: #00a8ff;
+            --success: #2ecc71;
+            --warning: #f39c12;
             --dark: #1a1a2e;
             --darker: #0d0d1a;
             --light: #f8f9fa;
@@ -219,6 +221,7 @@
             background: white;
             position: relative;
             z-index: 1;
+            cursor: pointer;
         }
 
         .prestasi-card::before {
@@ -305,6 +308,312 @@
             color: #6c757d;
             margin-bottom: 0;
             line-height: 1.6;
+        }
+
+        /* IMPROVED Modal Popup Styles */
+        .prestasi-modal .modal-content {
+            border-radius: var(--border-radius-lg);
+            border: none;
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+            background: var(--lighter);
+            position: relative;
+        }
+
+        .prestasi-modal .modal-header {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            padding: 25px 30px 20px;
+            position: relative;
+            background: var(--gradient);
+            color: white;
+        }
+
+        .prestasi-modal .modal-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            line-height: 1.3;
+            margin: 0;
+            padding-right: 40px;
+        }
+
+        .prestasi-modal .btn-close {
+            position: absolute;
+            top: 25px;
+            right: 30px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.9;
+            transition: var(--transition);
+            padding: 0;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .prestasi-modal .btn-close:hover {
+            opacity: 1;
+            transform: rotate(90deg);
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .prestasi-modal .modal-body {
+            padding: 30px;
+        }
+
+        .prestasi-modal .modal-image-container {
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+        }
+
+        .prestasi-modal .modal-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .prestasi-modal .modal-image:hover {
+            transform: scale(1.03);
+        }
+
+        .prestasi-modal .modal-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--primary-light);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            box-shadow: var(--shadow);
+            z-index: 3;
+        }
+
+        .prestasi-modal .detail-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .prestasi-modal .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            background: var(--light);
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            border-left: 4px solid var(--primary);
+        }
+
+        .prestasi-modal .detail-item:hover {
+            background: rgba(0, 102, 204, 0.05);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .prestasi-modal .detail-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gradient);
+            color: white;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            transition: var(--transition);
+        }
+
+        .prestasi-modal .detail-item:hover .detail-icon {
+            transform: scale(1.1);
+        }
+
+        .prestasi-modal .detail-content h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #6c757d;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .prestasi-modal .detail-content p {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin: 0;
+        }
+
+        .prestasi-modal .achievement-highlight {
+            background: linear-gradient(135deg, rgba(0, 102, 204, 0.05), rgba(0, 168, 255, 0.05));
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin-top: 20px;
+            border: 1px solid rgba(0, 102, 204, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .prestasi-modal .achievement-highlight::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--gradient);
+        }
+
+        .prestasi-modal .achievement-highlight h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .prestasi-modal .achievement-highlight p {
+            color: #555;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .prestasi-modal .modal-footer {
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            padding: 20px 30px;
+            display: flex;
+            justify-content: flex-end;
+            background: var(--light);
+        }
+
+        .prestasi-modal .btn-modal {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .prestasi-modal .btn-modal:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        /* Responsive Modal Styles */
+        @media (max-width: 991.98px) {
+            .prestasi-modal .modal-header {
+                padding: 20px 25px 15px;
+            }
+
+            .prestasi-modal .modal-body {
+                padding: 25px;
+            }
+
+            .prestasi-modal .modal-title {
+                font-size: 1.6rem;
+            }
+
+            .prestasi-modal .detail-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 767.98px) {
+            .prestasi-modal .modal-header {
+                padding: 20px 20px 15px;
+            }
+
+            .prestasi-modal .modal-body {
+                padding: 20px;
+            }
+
+            .prestasi-modal .modal-title {
+                font-size: 1.4rem;
+            }
+
+            .prestasi-modal .btn-close {
+                top: 20px;
+                right: 20px;
+                width: 32px;
+                height: 32px;
+            }
+
+            .prestasi-modal .detail-item {
+                padding: 15px;
+            }
+
+            .prestasi-modal .detail-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+
+            .prestasi-modal .detail-content h4 {
+                font-size: 0.8rem;
+            }
+
+            .prestasi-modal .detail-content p {
+                font-size: 1rem;
+            }
+
+            .prestasi-modal .modal-image {
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 575.98px) {
+            .prestasi-modal .modal-dialog {
+                margin: 10px;
+            }
+
+            .prestasi-modal .modal-header {
+                padding: 15px 15px 10px;
+            }
+
+            .prestasi-modal .modal-body {
+                padding: 15px;
+            }
+
+            .prestasi-modal .modal-title {
+                font-size: 1.3rem;
+                padding-right: 30px;
+            }
+
+            .prestasi-modal .btn-close {
+                top: 15px;
+                right: 15px;
+            }
+
+            .prestasi-modal .detail-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+
+            .prestasi-modal .modal-footer {
+                padding: 15px;
+            }
+
+            .prestasi-modal .modal-image {
+                height: 200px;
+            }
         }
 
         /* Filter Styles */
@@ -662,17 +971,17 @@
     </header>
 
     <section class="hero-section" style="background: var(--gradient-dark); padding: 130px 0 40px;">
-    <div class="container">
-        <div class="row">
-            <div class="col-12 text-center text-white mt-4">
-                <h1 class="hero-title animate__animated animate__fadeInUp">Prestasi Siswa</h1>
-                <p class="hero-subtitle animate__animated animate__fadeInUp animate__delay-1s">
-                    Kumpulan prestasi membanggakan yang telah diraih oleh siswa-siswi SMK Muhammadiyah 1 Berbek
-                </p>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center text-white mt-4">
+                    <h1 class="hero-title animate__animated animate__fadeInUp">Prestasi Siswa</h1>
+                    <p class="hero-subtitle animate__animated animate__fadeInUp animate__delay-1s">
+                        Kumpulan prestasi membanggakan yang telah diraih oleh siswa-siswi SMK Muhammadiyah 1 Berbek
+                    </p>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <section class="filter-section">
         <div class="container">
@@ -701,7 +1010,14 @@
                     @foreach ($prestasi as $item)
                         <div class="col-lg-4 col-md-6 mb-4 prestasi-item"
                             data-jurusan="{{ Str::slug($item->jurusan) }}" data-year="{{ $item->tahun_prestasi }}">
-                            <div class="prestasi-card animate__animated animate__fadeInUp">
+                            <div class="prestasi-card animate__animated animate__fadeInUp"
+                                data-prestasi-id="{{ $item->id }}" data-prestasi-nama="{{ $item->nama_prestasi }}"
+                                data-prestasi-siswa="{{ $item->nama_siswa }}"
+                                data-prestasi-jurusan="{{ $item->jurusan }}"
+                                data-prestasi-peringkat="{{ $item->peringkat }}"
+                                data-prestasi-tahun="{{ $item->tahun_prestasi }}"
+                                data-prestasi-foto="{{ $item->foto_prestasi_url }}"
+                                data-prestasi-deskripsi="{{ $item->deskripsi ?? 'Prestasi yang membanggakan dari siswa ' . $item->jurusan . ' dalam bidang ' . strtolower($item->nama_prestasi) . '.' }}">
                                 <div class="position-relative overflow-hidden">
                                     <img src="{{ $item->foto_prestasi_url }}" class="prestasi-image"
                                         alt="{{ $item->nama_prestasi }}"
@@ -724,8 +1040,7 @@
                                         </div>
                                     </div>
                                     <p class="prestasi-description">
-                                        Prestasi yang membanggakan dari siswa {{ $item->jurusan }} dalam bidang
-                                        {{ strtolower($item->nama_prestasi) }}.
+                                        {{ $item->deskripsi ?? 'Prestasi yang membanggakan dari siswa ' . $item->jurusan . ' dalam bidang ' . strtolower($item->nama_prestasi) . '.' }}
                                     </p>
                                 </div>
                             </div>
@@ -743,6 +1058,75 @@
             @endif
         </div>
     </section>
+
+    <div class="modal fade prestasi-modal" id="prestasiModal" tabindex="-1" aria-labelledby="prestasiModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="prestasiModalLabel">Detail Prestasi</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-image-container">
+                        <img id="modalImage" src="" alt="Foto Prestasi" class="modal-image">
+                        <div class="modal-badge" id="modalBadge">Juara 1</div>
+                    </div>
+
+                    <div class="detail-grid">
+                        <div class="detail-item">
+                            <div class="detail-icon">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                            <div class="detail-content">
+                                <h4>Nama Siswa</h4>
+                                <p id="modalNamaSiswa">-</p>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div class="detail-content">
+                                <h4>Jurusan</h4>
+                                <p id="modalJurusan">-</p>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-icon">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <div class="detail-content">
+                                <h4>Peringkat</h4>
+                                <p id="modalPeringkat">-</p>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-icon">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <div class="detail-content">
+                                <h4>Tahun Prestasi</h4>
+                                <p id="modalTahun">-</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="achievement-highlight">
+                        <h4>Deskripsi Prestasi</h4>
+                        <p id="modalDeskripsi">-</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-modal" data-bs-dismiss="modal">
+                        <i class="fas fa-times me-2"></i>Tutup
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <footer class="footer-section">
         <div class="container">
@@ -902,6 +1286,54 @@
                         }, 300);
                     }
                 });
+            });
+        });
+
+        // IMPROVED Modal functionality
+        document.querySelectorAll('.prestasi-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const modal = new bootstrap.Modal(document.getElementById('prestasiModal'));
+
+                // Get data from card
+                const namaPrestasi = this.getAttribute('data-prestasi-nama');
+                const namaSiswa = this.getAttribute('data-prestasi-siswa');
+                const jurusan = this.getAttribute('data-prestasi-jurusan');
+                const peringkat = this.getAttribute('data-prestasi-peringkat');
+                const tahun = this.getAttribute('data-prestasi-tahun');
+                const foto = this.getAttribute('data-prestasi-foto');
+                const deskripsi = this.getAttribute('data-prestasi-deskripsi');
+
+                // Set modal content
+                document.getElementById('prestasiModalLabel').textContent = namaPrestasi;
+                document.getElementById('modalNamaSiswa').textContent = namaSiswa;
+                document.getElementById('modalJurusan').textContent = jurusan;
+                document.getElementById('modalPeringkat').textContent = peringkat;
+                document.getElementById('modalTahun').textContent = tahun;
+                document.getElementById('modalImage').src = foto;
+                document.getElementById('modalImage').alt = namaPrestasi;
+                document.getElementById('modalBadge').textContent = peringkat;
+                document.getElementById('modalDeskripsi').textContent = deskripsi;
+
+                // Show modal
+                modal.show();
+
+                // Add animation to modal elements
+                setTimeout(() => {
+                    const modalItems = document.querySelectorAll('.prestasi-modal .detail-item');
+                    modalItems.forEach((item, index) => {
+                        setTimeout(() => {
+                            item.style.opacity = '0';
+                            item.style.transform = 'translateY(20px)';
+                            item.style.transition =
+                                'opacity 0.5s ease, transform 0.5s ease';
+
+                            setTimeout(() => {
+                                item.style.opacity = '1';
+                                item.style.transform = 'translateY(0)';
+                            }, 50);
+                        }, index * 100);
+                    });
+                }, 300);
             });
         });
 
