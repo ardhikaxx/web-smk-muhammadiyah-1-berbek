@@ -19,15 +19,12 @@
             --primary-dark: #004d99;
             --primary-light: #4d94ff;
             --secondary: #00a8ff;
-            --accent: #ff6b6b;
-            --accent-light: #ff9999;
             --dark: #1a1a2e;
             --darker: #0d0d1a;
             --light: #f8f9fa;
             --lighter: #ffffff;
             --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
             --gradient-dark: linear-gradient(135deg, var(--primary-dark), #0097e6);
-            --gradient-accent: linear-gradient(135deg, var(--accent), #ff8e8e);
             --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
             --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.12);
             --shadow-xl: 0 25px 50px rgba(0, 0, 0, 0.15);
@@ -74,21 +71,10 @@
             font-weight: 800;
             margin-bottom: 1.5rem;
             position: relative;
-            background: var(--gradient);
+            background: var(--primary);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             display: inline-block;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 0;
-            width: 100px;
-            height: 5px;
-            background: var(--gradient);
-            border-radius: 10px;
         }
 
         .section-title.center::after {
@@ -222,6 +208,7 @@
             background: white;
             position: relative;
             z-index: 1;
+            cursor: pointer;
         }
 
         .pengumuman-card::before {
@@ -255,7 +242,7 @@
             position: absolute;
             top: 15px;
             right: 15px;
-            background: var(--primary-light);
+            background: var(--gradient);
             color: white;
             padding: 8px 15px;
             border-radius: 50px;
@@ -323,6 +310,458 @@
         .pengumuman-status.inactive {
             background: rgba(108, 117, 125, 0.1);
             color: #6c757d;
+        }
+
+        .pengumuman-modal .modal-content {
+            border-radius: var(--border-radius-lg);
+            border: none;
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+            background: var(--lighter);
+            position: relative;
+        }
+
+        .pengumuman-modal .modal-header {
+            border-bottom: none;
+            padding: 25px 30px 15px;
+            position: relative;
+            background: var(--gradient);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .pengumuman-modal .modal-title-container {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            width: 100%;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .pengumuman-modal .modal-title-wrapper {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .pengumuman-modal .modal-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            line-height: 1.3;
+            margin: 0 0 10px 0;
+            color: #ffff;
+            position: relative;
+        }
+
+        .pengumuman-modal .modal-subtitle {
+            color: #f5f5f5;
+            font-size: 0.95rem;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .pengumuman-modal .modal-subtitle i {
+            color: #ffff;
+        }
+
+        .pengumuman-modal .btn-close {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            background: #ffff;
+            opacity: 1;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            padding: 0;
+            border: none;
+            color: var(--primary);
+            font-size: 1.2rem;
+            z-index: 10;
+        }
+
+        .pengumuman-modal .btn-close:hover {
+            transform: rotate(90deg);
+            opacity: 1;
+        }
+
+        .pengumuman-modal .modal-body {
+            padding: 0 30px 25px;
+        }
+
+        .pengumuman-modal .modal-image-container {
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(23, 162, 184, 0.1);
+        }
+
+        .pengumuman-modal .modal-image {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .pengumuman-modal .modal-image:hover {
+            transform: scale(1.02);
+        }
+
+        .pengumuman-modal .modal-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--gradient);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            box-shadow: var(--shadow);
+            z-index: 3;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .pengumuman-modal .detail-section {
+            margin-bottom: 25px;
+        }
+
+        .pengumuman-modal .section-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+            padding-bottom: 8px;
+        }
+
+        .pengumuman-modal .section-title i {
+            background: var(--primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .pengumuman-modal .detail-content {
+            background: rgba(23, 162, 184, 0.03);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            border-left: 4px solid var(--primary);
+            line-height: 1.7;
+            color: #555;
+            font-size: 1rem;
+            max-height: 300px;
+            overflow-y: auto;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .pengumuman-modal .detail-content::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .pengumuman-modal .detail-content::-webkit-scrollbar-track {
+            background: rgba(23, 162, 184, 0.05);
+            border-radius: 10px;
+        }
+
+        .pengumuman-modal .detail-content::-webkit-scrollbar-thumb {
+            background: var(--primary-light);
+            border-radius: 10px;
+        }
+
+        .pengumuman-modal .detail-content::-webkit-scrollbar-thumb:hover {
+            background: var(--primary);
+        }
+
+        .pengumuman-modal .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .pengumuman-modal .info-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(23, 162, 184, 0.1);
+        }
+
+        .pengumuman-modal .info-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(23, 162, 184, 0.3);
+        }
+
+        .pengumuman-modal .info-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gradient);
+            color: white;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            box-shadow: 0 4px 10px rgba(23, 162, 184, 0.3);
+        }
+
+        .pengumuman-modal .info-content h4 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #6c757d;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .pengumuman-modal .info-content p {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin: 0;
+        }
+
+        .pengumuman-modal .modal-footer {
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(23, 162, 184, 0.03), rgba(106, 212, 232, 0.03));
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .pengumuman-modal .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: var(--shadow);
+        }
+
+        .pengumuman-modal .status-indicator.active {
+            background: rgba(40, 167, 69, 0.1);
+            color: #28a745;
+            border: 1px solid rgba(40, 167, 69, 0.2);
+        }
+
+        .pengumuman-modal .status-indicator.inactive {
+            background: rgba(108, 117, 125, 0.1);
+            color: #6c757d;
+            border: 1px solid rgba(108, 117, 125, 0.2);
+        }
+
+        .pengumuman-modal .btn-modal {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pengumuman-modal .btn-modal::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .pengumuman-modal .btn-modal:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .pengumuman-modal .btn-modal:hover::before {
+            left: 100%;
+        }
+
+        /* NEW: Improved Responsive Modal Styles */
+        @media (max-width: 1199.98px) {
+            .pengumuman-modal .modal-title {
+                font-size: 1.6rem;
+            }
+            
+            .pengumuman-modal .modal-image {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 991.98px) {
+            .pengumuman-modal .modal-header {
+                padding: 20px 25px 15px;
+            }
+            
+            .pengumuman-modal .modal-body {
+                padding: 0 25px 20px;
+            }
+            
+            .pengumuman-modal .modal-title {
+                font-size: 1.5rem;
+            }
+            
+            .pengumuman-modal .info-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            
+            .pengumuman-modal .modal-image {
+                height: 280px;
+            }
+        }
+
+        @media (max-width: 767.98px) {
+            .pengumuman-modal .modal-dialog {
+                margin: 15px;
+                max-width: calc(100% - 30px);
+            }
+            
+            .pengumuman-modal .modal-header {
+                padding: 20px 20px 15px;
+            }
+            
+            .pengumuman-modal .modal-body {
+                padding: 0 20px 20px;
+            }
+            
+            .pengumuman-modal .modal-title {
+                font-size: 1.4rem;
+            }
+            
+            .pengumuman-modal .btn-close {
+                top: 15px;
+                right: 15px;
+                width: 35px;
+                height: 35px;
+            }
+            
+            .pengumuman-modal .modal-image {
+                height: 220px;
+            }
+            
+            .pengumuman-modal .modal-footer {
+                padding: 15px 20px;
+                flex-direction: column;
+                gap: 15px;
+                align-items: stretch;
+            }
+            
+            .pengumuman-modal .status-indicator {
+                justify-content: center;
+            }
+            
+            .pengumuman-modal .btn-modal {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .pengumuman-modal .detail-content {
+                max-height: 250px;
+                padding: 15px;
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 575.98px) {
+            .pengumuman-modal .modal-dialog {
+                margin: 10px;
+                max-width: calc(100% - 20px);
+            }
+            
+            .pengumuman-modal .modal-header {
+                padding: 15px 15px 10px;
+            }
+            
+            .pengumuman-modal .modal-body {
+                padding: 0 15px 15px;
+            }
+            
+            .pengumuman-modal .modal-title {
+                font-size: 1.3rem;
+            }
+            
+            .pengumuman-modal .btn-close {
+                top: 12px;
+                right: 12px;
+                width: 32px;
+                height: 32px;
+                font-size: 1rem;
+            }
+            
+            .pengumuman-modal .modal-image {
+                height: 180px;
+            }
+            
+            .pengumuman-modal .info-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+                padding: 12px;
+            }
+            
+            .pengumuman-modal .modal-footer {
+                padding: 15px;
+            }
+            
+            .pengumuman-modal .detail-content {
+                max-height: 200px;
+                padding: 12px;
+                font-size: 0.9rem;
+            }
+            
+            .pengumuman-modal .section-title {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .pengumuman-modal .modal-title {
+                font-size: 1.2rem;
+            }
+            
+            .pengumuman-modal .modal-image {
+                height: 160px;
+            }
+            
+            .pengumuman-modal .modal-subtitle {
+                font-size: 0.85rem;
+            }
         }
 
         /* Filter Styles */
@@ -698,7 +1137,14 @@
                 <div class="row" id="pengumuman-grid">
                     @foreach ($pengumuman as $item)
                         <div class="col-lg-4 col-md-6 mb-4 pengumuman-item">
-                            <div class="pengumuman-card animate__animated animate__fadeInUp">
+                            <div class="pengumuman-card animate__animated animate__fadeInUp"
+                                 data-pengumuman-id="{{ $item->id }}"
+                                 data-pengumuman-nama="{{ $item->nama_pengumuman }}"
+                                 data-pengumuman-deskripsi="{{ $item->deskripsi_pengumuman }}"
+                                 data-pengumuman-foto="{{ $item->foto_pengumuman_url }}"
+                                 data-pengumuman-tanggal="{{ $item->created_at->format('d M Y') }}"
+                                 data-pengumuman-status="{{ $item->status ? 'active' : 'inactive' }}"
+                                 data-pengumuman-urutan="{{ $item->urutan }}">
                                 <div class="position-relative overflow-hidden">
                                     <img src="{{ $item->foto_pengumuman_url }}" class="pengumuman-image"
                                         alt="{{ $item->nama_pengumuman }}"
@@ -738,6 +1184,75 @@
             @endif
         </div>
     </section>
+
+    <div class="modal fade pengumuman-modal" id="pengumumanModal" tabindex="-1" aria-labelledby="pengumumanModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="modal-title-container">
+                        <div class="modal-title-wrapper">
+                            <h2 class="modal-title" id="pengumumanModalLabel">Detail Pengumuman</h2>
+                            <p class="modal-subtitle">
+                                <i class="fas fa-info-circle"></i>
+                                <span id="modalTanggal">-</span>
+                            </p>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-image-container mt-3">
+                        <img id="modalImage" src="" alt="Foto Pengumuman" class="modal-image">
+                        <div class="modal-badge">
+                            <i class="fas fa-bullhorn me-1"></i> Pengumuman
+                        </div>
+                    </div>
+                    
+                    <div class="detail-section">
+                        <h3 class="section-title">
+                            <i class="fas fa-file-alt"></i>
+                            Deskripsi Pengumuman
+                        </h3>
+                        <div class="detail-content" id="modalDeskripsi">
+                            -
+                        </div>
+                    </div>
+                    
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-calendar-check"></i>
+                            </div>
+                            <div class="info-content">
+                                <h4>Tanggal Dibuat</h4>
+                                <p id="modalTanggalDibuat">-</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="info-content">
+                                <h4>Prioritas</h4>
+                                <p id="modalUrutan">-</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="status-indicator" id="modalStatus">
+                        <i class="fas fa-circle"></i>
+                        <span>Status: -</span>
+                    </div>
+                    <button type="button" class="btn btn-modal" data-bs-dismiss="modal">
+                        <i class="fas fa-times me-2"></i>Tutup Pengumuman
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <footer class="footer-section">
         <div class="container">
@@ -865,6 +1380,55 @@
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
+            });
+        });
+
+        // NEW: Enhanced Modal functionality for Pengumuman
+        document.querySelectorAll('.pengumuman-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const modal = new bootstrap.Modal(document.getElementById('pengumumanModal'));
+                
+                // Get data from card
+                const namaPengumuman = this.getAttribute('data-pengumuman-nama');
+                const deskripsi = this.getAttribute('data-pengumuman-deskripsi');
+                const foto = this.getAttribute('data-pengumuman-foto');
+                const tanggal = this.getAttribute('data-pengumuman-tanggal');
+                const status = this.getAttribute('data-pengumuman-status');
+                const urutan = this.getAttribute('data-pengumuman-urutan');
+                
+                // Set modal content
+                document.getElementById('pengumumanModalLabel').textContent = namaPengumuman;
+                document.getElementById('modalTanggal').textContent = `Dipublikasikan: ${tanggal}`;
+                document.getElementById('modalTanggalDibuat').textContent = tanggal;
+                document.getElementById('modalImage').src = foto;
+                document.getElementById('modalImage').alt = namaPengumuman;
+                document.getElementById('modalDeskripsi').textContent = deskripsi;
+                document.getElementById('modalUrutan').textContent = `Prioritas ${urutan}`;
+                
+                // Set status
+                const statusElement = document.getElementById('modalStatus');
+                statusElement.className = `status-indicator ${status}`;
+                statusElement.innerHTML = `<i class="fas fa-circle"></i><span>Status: ${status === 'active' ? 'Aktif' : 'Tidak Aktif'}</span>`;
+                
+                // Show modal
+                modal.show();
+                
+                // Add animation to modal elements
+                setTimeout(() => {
+                    const modalItems = document.querySelectorAll('.pengumuman-modal .info-item');
+                    modalItems.forEach((item, index) => {
+                        setTimeout(() => {
+                            item.style.opacity = '0';
+                            item.style.transform = 'translateY(20px)';
+                            item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                            
+                            setTimeout(() => {
+                                item.style.opacity = '1';
+                                item.style.transform = 'translateY(0)';
+                            }, 50);
+                        }, index * 150);
+                    });
+                }, 300);
             });
         });
 
