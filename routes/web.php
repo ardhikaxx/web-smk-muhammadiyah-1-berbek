@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ManajemenBannerController;
 use App\Http\Controllers\ManajemenStrukturController;
 use App\Http\Controllers\ManajemenPengumumanController;
@@ -29,10 +30,9 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 
 Route::middleware(['auth:admin'])->group(function () {
     Route::get('/admin/current', [AuthController::class, 'getCurrentAdmin'])->name('admin.current');
-    // Dashboard Admin Routes
-    Route::get('/admin/dashboard', function () {
-        return view('admin.dashboard.index');
-    })->name('admin.dashboard');
+    // Dashboard Routes
+    Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+    Route::get('/admin/dashboard/chart-data', [DashboardController::class, 'getChartData'])->name('admin.dashboard.chart-data');
 
     // Manajemen Banner Routes
     Route::get('/admin/manajemen-banner', [ManajemenBannerController::class, 'index'])->name('admin.manajemen-banner.index');
