@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ManajemenBannerController;
+use App\Http\Controllers\ManajemenStrukturController;
 use App\Http\Controllers\ManajemenPengumumanController;
 use App\Http\Controllers\ManajemenFasilitasController;
 use App\Http\Controllers\ManajemenPrestasiController;
@@ -40,6 +41,14 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::put('/admin/manajemen-banner/{banner}', [ManajemenBannerController::class, 'update'])->name('admin.manajemen-banner.update');
     Route::delete('/admin/manajemen-banner/{banner}', [ManajemenBannerController::class, 'destroy'])->name('admin.manajemen-banner.destroy');
     Route::patch('/admin/manajemen-banner/{banner}/status', [ManajemenBannerController::class, 'updateStatus'])->name('admin.manajemen-banner.status');
+
+    // Manajemen Struktur Routes
+    Route::get('/admin/manajemen-struktur', [ManajemenStrukturController::class, 'index'])->name('admin.manajemen-struktur.index');
+    Route::post('/admin/manajemen-struktur', [ManajemenStrukturController::class, 'store'])->name('admin.manajemen-struktur.store');
+    Route::get('/admin/manajemen-struktur/{struktur}', [ManajemenStrukturController::class, 'show'])->name('admin.manajemen-struktur.show');
+    Route::put('/admin/manajemen-struktur/{struktur}', [ManajemenStrukturController::class, 'update'])->name('admin.manajemen-struktur.update');
+    Route::delete('/admin/manajemen-struktur/{struktur}', [ManajemenStrukturController::class, 'destroy'])->name('admin.manajemen-struktur.destroy');
+    Route::patch('/admin/manajemen-struktur/{struktur}/status', [ManajemenStrukturController::class, 'updateStatus'])->name('admin.manajemen-struktur.status');
 
     // Manajemen Pengumuman Routes
     Route::get('/admin/manajemen-pengumuman', [ManajemenPengumumanController::class, 'index'])->name('admin.manajemen-pengumuman.index');

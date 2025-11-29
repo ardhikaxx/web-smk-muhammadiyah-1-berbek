@@ -122,6 +122,212 @@
             background: var(--primary-dark);
         }
 
+        /* Pengumuman Section Styles */
+        .pengumuman-section {
+            background: #ffff;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pengumuman-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.3" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,192C1248,192,1344,128,1392,96L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-position: center bottom;
+        }
+
+        .pengumuman-carousel {
+            position: relative;
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+            margin-bottom: 40px;
+        }
+
+        .pengumuman-carousel .carousel-item {
+            height: 450px;
+            position: relative;
+        }
+
+        .pengumuman-carousel .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.9);
+            transition: var(--transition);
+        }
+
+        .pengumuman-carousel .carousel-item:hover img {
+            filter: brightness(1);
+            transform: scale(1.05);
+        }
+
+        .pengumuman-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0, 102, 204, 0.9), transparent);
+            color: white;
+            padding: 40px 30px 30px;
+            transform: translateY(0);
+            transition: var(--transition);
+        }
+
+        .pengumuman-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: white;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .pengumuman-description {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-bottom: 0;
+            line-height: 1.6;
+        }
+
+        .pengumuman-carousel .carousel-control-prev,
+        .pengumuman-carousel .carousel-control-next {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0;
+            transition: var(--transition);
+            margin: 0 20px;
+        }
+
+        .pengumuman-carousel:hover .carousel-control-prev,
+        .pengumuman-carousel:hover .carousel-control-next {
+            opacity: 1;
+        }
+
+        .pengumuman-carousel .carousel-control-prev-icon,
+        .pengumuman-carousel .carousel-control-next-icon {
+            width: 25px;
+            height: 25px;
+        }
+
+        .pengumuman-carousel .carousel-indicators {
+            bottom: 1px;
+        }
+
+        .pengumuman-carousel .carousel-indicators button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin: 0 8px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border: none;
+            transition: var(--transition);
+        }
+
+        .pengumuman-carousel .carousel-indicators button.active {
+            background-color: white;
+            transform: scale(1.2);
+        }
+
+        .pengumuman-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+
+        .pengumuman-section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .pengumuman-section-description {
+            font-size: 1.2rem;
+            color: #6c757d;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .pengumuman-btn {
+            padding: 15px 40px;
+            font-weight: 600;
+            border-radius: 50px;
+            background: var(--gradient);
+            color: white;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .pengumuman-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background: var(--gradient-dark);
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .pengumuman-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            color: white;
+        }
+
+        .pengumuman-btn:hover::before {
+            width: 100%;
+        }
+
+        .pengumuman-btn i {
+            transition: var(--transition);
+        }
+
+        .pengumuman-btn:hover i {
+            transform: translateX(5px);
+        }
+
+        .no-pengumuman {
+            text-align: center;
+            padding: 80px 20px;
+            background: white;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow);
+        }
+
+        .no-pengumuman-icon {
+            font-size: 4rem;
+            color: #e2e8f0;
+            margin-bottom: 20px;
+        }
+
+        .no-pengumuman-text {
+            font-size: 1.3rem;
+            color: #6c757d;
+            margin-bottom: 30px;
+        }
+
         .navbar {
             background-color: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
@@ -448,7 +654,7 @@
         /* Stats Section */
         .stats-section {
             background-color: var(--light);
-            padding: 100px 0;
+            padding: 20px 0;
             position: relative;
         }
 
@@ -777,6 +983,29 @@
             transform: translateY(0);
         }
 
+        .facility-item.hidden,
+        .gallery-item.hidden {
+            display: none;
+        }
+
+        .facility-item.show,
+        .gallery-item.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         /* Footer */
         .footer-section {
             background: var(--darker);
@@ -979,10 +1208,18 @@
             .section-title {
                 font-size: 2.5rem;
             }
+
+            .pengumuman-section-title {
+                font-size: 2.2rem;
+            }
         }
 
         @media (max-width: 991.98px) {
             .section-padding {
+                padding: 80px 0;
+            }
+
+            .pengumuman-section {
                 padding: 80px 0;
             }
 
@@ -1009,6 +1246,10 @@
 
             .section-title {
                 font-size: 2.2rem;
+            }
+
+            .pengumuman-carousel .carousel-item {
+                height: 400px;
             }
 
             .ppdb-form {
@@ -1038,7 +1279,15 @@
                 font-size: 2rem;
             }
 
+            .pengumuman-section-title {
+                font-size: 1.8rem;
+            }
+
             .section-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .pengumuman-section-description {
                 font-size: 1.1rem;
             }
 
@@ -1047,8 +1296,20 @@
                 font-size: 0.95rem;
             }
 
+            .pengumuman-btn {
+                padding: 12px 30px;
+            }
+
             .hero-carousel .carousel-item img {
                 height: 350px;
+            }
+
+            .pengumuman-carousel .carousel-item {
+                height: 350px;
+            }
+
+            .pengumuman-title {
+                font-size: 1.5rem;
             }
 
             .stat-card,
@@ -1082,12 +1343,28 @@
                 font-size: 1.8rem;
             }
 
+            .pengumuman-section-title {
+                font-size: 1.6rem;
+            }
+
             .hero-buttons .btn {
                 width: 100%;
             }
 
             .hero-carousel .carousel-item img {
                 height: 300px;
+            }
+
+            .pengumuman-carousel .carousel-item {
+                height: 300px;
+            }
+
+            .pengumuman-overlay {
+                padding: 30px 20px 20px;
+            }
+
+            .pengumuman-title {
+                font-size: 1.3rem;
             }
 
             .ppdb-form {
@@ -1137,7 +1414,7 @@
                             <a class="nav-link" href="{{ route('pengumuman') }}">Pengumuman</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('profil') }}">Profil</a>
+                            <a class="nav-link" href="{{ route('profil') }}">Profil Sekolah</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('prestasi') }}">Prestasi</a>
@@ -1245,10 +1522,77 @@
         </div>
     </section>
 
+    <!-- Section Pengumuman -->
+    <section class="pengumuman-section">
+        <div class="container">
+            <div class="pengumuman-content">
+                <h2 class="pengumuman-section-title">Pengumuman Terbaru</h2>
+                <p class="pengumuman-section-description">
+                    Dapatkan informasi terbaru seputar kegiatan, agenda sekolah, dan pengumuman penting lainnya
+                    dari SMK Muhammadiyah 1 Berbek Nganjuk.
+                </p>
+            </div>
+
+            @if ($pengumumans->count() > 0)
+                <div class="pengumuman-carousel">
+                    <div id="pengumumanCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-indicators">
+                            @foreach ($pengumumans as $index => $pengumuman)
+                                <button type="button" data-bs-target="#pengumumanCarousel"
+                                    data-bs-slide-to="{{ $index }}" class="{{ $index == 0 ? 'active' : '' }}"
+                                    aria-current="{{ $index == 0 ? 'true' : 'false' }}"
+                                    aria-label="Slide {{ $index + 1 }}"></button>
+                            @endforeach
+                        </div>
+
+                        <div class="carousel-inner">
+                            @foreach ($pengumumans as $index => $pengumuman)
+                                <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+                                    <img src="{{ $pengumuman->foto_pengumuman_url }}" class="d-block w-100"
+                                        alt="{{ $pengumuman->nama_pengumuman }}">
+                                    <div class="pengumuman-overlay">
+                                        <h3 class="pengumuman-title">{{ $pengumuman->nama_pengumuman }}</h3>
+                                        <p class="pengumuman-description">{{ $pengumuman->deskripsi_pendek }}</p>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+
+                        <button class="carousel-control-prev" type="button" data-bs-target="#pengumumanCarousel"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#pengumumanCarousel"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+            @else
+                <div class="no-pengumuman">
+                    <div class="no-pengumuman-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3 class="no-pengumuman-text">Tidak Ada Pengumuman Saat Ini</h3>
+                    <p class="text-muted">Silakan kembali lagi nanti untuk melihat pengumuman terbaru dari sekolah.</p>
+                </div>
+            @endif
+
+            <div class="text-center mt-5">
+                <a href="{{ route('pengumuman') }}" class="pengumuman-btn">
+                    Lihat Semua Pengumuman
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
     <section class="stats-section">
         <div class="container">
-            <div class="row">
-                <div class="col-md-3 col-12 mb-4">
+            <div class="row mt-3">
+                <div class="col-md-3 col-12 mb-4 lg:mb-0">
                     <div class="stat-card">
                         <div class="stat-icon">
                             <i class="fas fa-building"></i>
@@ -1257,7 +1601,7 @@
                         <div class="stat-text">Fasilitas</div>
                     </div>
                 </div>
-                <div class="col-md-3 col-12 mb-4">
+                <div class="col-md-3 col-12 mb-4 lg:mb-0">
                     <div class="stat-card">
                         <div class="stat-icon">
                             <i class="fas fa-chalkboard-teacher"></i>
@@ -1266,7 +1610,7 @@
                         <div class="stat-text">Guru Berpengalaman</div>
                     </div>
                 </div>
-                <div class="col-md-3 col-12 mb-4">
+                <div class="col-md-3 col-12 mb-4 lg:mb-0">
                     <div class="stat-card">
                         <div class="stat-icon">
                             <i class="fas fa-trophy"></i>
@@ -1275,7 +1619,7 @@
                         <div class="stat-text">Prestasi</div>
                     </div>
                 </div>
-                <div class="col-md-3 col-12 mb-4">
+                <div class="col-md-3 col-12 mb-4 lg:mb-0">
                     <div class="stat-card">
                         <div class="stat-icon">
                             <i class="fas fa-graduation-cap"></i>
@@ -1332,10 +1676,10 @@
                         mengajar yang optimal</p>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" id="facilities-container">
                 @if ($fasilitas->count() > 0)
-                    @foreach ($fasilitas as $fasilitasItem)
-                        <div class="col-md-6 col-lg-4 mb-4">
+                    @foreach ($fasilitas as $index => $fasilitasItem)
+                        <div class="col-md-6 col-lg-4 mb-4 facility-item {{ $index >= 3 ? 'hidden' : '' }}">
                             <div class="card facility-card">
                                 <img src="{{ $fasilitasItem->foto_fasilitas_url }}" class="card-img-top"
                                     alt="{{ $fasilitasItem->nama_fasilitas }}">
@@ -1348,7 +1692,7 @@
                     @endforeach
                 @else
                     <!-- Fallback jika tidak ada fasilitas aktif -->
-                    <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="col-md-6 col-lg-4 mb-4 facility-item">
                         <div class="card facility-card">
                             <img src="{{ asset('images/default-img.png') }}" class="card-img-top" alt="Ruang Kelas">
                             <div class="facility-overlay">
@@ -1359,7 +1703,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="col-md-6 col-lg-4 mb-4 facility-item">
                         <div class="card facility-card">
                             <img src="{{ asset('images/default-img.png') }}" class="card-img-top"
                                 alt="Laboratorium Komputer">
@@ -1370,7 +1714,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="col-md-6 col-lg-4 mb-4 facility-item">
                         <div class="card facility-card">
                             <img src="{{ asset('images/default-img.png') }}" class="card-img-top"
                                 alt="Bengkel Otomotif">
@@ -1384,6 +1728,11 @@
                     </div>
                 @endif
             </div>
+            @if ($fasilitas->count() > 3)
+                <div class="text-center mt-4">
+                    <button id="lihat-fasilitas" class="btn btn-primary btn-lg">Lihat Fasilitas Selengkapnya</button>
+                </div>
+            @endif
         </div>
     </section>
 
@@ -1397,10 +1746,10 @@
                         Muhammadiyah 1 Berbek</p>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" id="gallery-container">
                 @if ($galleries->count() > 0)
-                    @foreach ($galleries as $gallery)
-                        <div class="col-md-4 mb-4">
+                    @foreach ($galleries as $index => $gallery)
+                        <div class="col-md-4 mb-4 gallery-item {{ $index >= 3 ? 'hidden' : '' }}">
                             <div class="gallery-item">
                                 <img src="{{ $gallery->foto_gallery_url }}" alt="{{ $gallery->nama_gallery }}">
                                 <div class="gallery-overlay">
@@ -1413,7 +1762,7 @@
                         </div>
                     @endforeach
                 @else
-                    <div class="col-md-4 mb-4">
+                    <div class="col-md-4 mb-4 gallery-item">
                         <div class="gallery-item">
                             <img src="{{ asset('images/default-img.png') }}" alt="Praktikum Lab">
                             <div class="gallery-overlay">
@@ -1424,7 +1773,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 mb-4">
+                    <div class="col-md-4 mb-4 gallery-item">
                         <div class="gallery-item">
                             <img src="{{ asset('images/default-img.png') }}" alt="Ekstrakurikuler">
                             <div class="gallery-overlay">
@@ -1435,7 +1784,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 mb-4">
+                    <div class="col-md-4 mb-4 gallery-item">
                         <div class="gallery-item">
                             <img src="{{ asset('images/default-img.png') }}" alt="Upacara Bendera">
                             <div class="gallery-overlay">
@@ -1448,9 +1797,11 @@
                     </div>
                 @endif
             </div>
-            <div class="text-center mt-4">
-                <a href="" class="btn btn-primary btn-lg">Lihat Galeri Lengkap</a>
-            </div>
+            @if ($galleries->count() > 3)
+                <div class="text-center mt-4">
+                    <button id="lihat-galeri" class="btn btn-primary btn-lg">Lihat Galeri Selengkapnya</button>
+                </div>
+            @endif
         </div>
     </section>
 
@@ -1600,7 +1951,8 @@
         });
 
         const animateOnScroll = function() {
-            const elements = document.querySelectorAll('.stat-card, .jurusan-card, .facility-card, .gallery-item');
+            const elements = document.querySelectorAll(
+                '.stat-card, .jurusan-card, .facility-card, .gallery-item, .pengumuman-carousel');
 
             elements.forEach(element => {
                 const elementPosition = element.getBoundingClientRect().top;
@@ -1613,14 +1965,44 @@
             });
         };
 
-        document.querySelectorAll('.stat-card, .jurusan-card, .facility-card, .gallery-item').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        });
+        document.querySelectorAll('.stat-card, .jurusan-card, .facility-card, .gallery-item, .pengumuman-carousel').forEach(
+            el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            });
 
         window.addEventListener('scroll', animateOnScroll);
         window.addEventListener('load', animateOnScroll);
+
+        // Fungsi untuk menampilkan semua fasilitas
+        document.getElementById('lihat-fasilitas')?.addEventListener('click', function() {
+            const hiddenFacilities = document.querySelectorAll('.facility-item.hidden');
+            hiddenFacilities.forEach(item => {
+                item.classList.remove('hidden');
+                item.classList.add('show');
+            });
+            this.style.display = 'none';
+        });
+
+        // Fungsi untuk menampilkan semua galeri
+        document.getElementById('lihat-galeri')?.addEventListener('click', function() {
+            const hiddenGalleries = document.querySelectorAll('.gallery-item.hidden');
+            hiddenGalleries.forEach(item => {
+                item.classList.remove('hidden');
+                item.classList.add('show');
+            });
+            this.style.display = 'none';
+        });
+
+        // Auto slide untuk carousel pengumuman
+        const pengumumanCarousel = document.getElementById('pengumumanCarousel');
+        if (pengumumanCarousel) {
+            const carousel = new bootstrap.Carousel(pengumumanCarousel, {
+                interval: 5000,
+                wrap: true
+            });
+        }
     </script>
 </body>
 

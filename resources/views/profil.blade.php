@@ -448,7 +448,7 @@
         /* Stats Section */
         .stats-section {
             background-color: var(--light);
-            padding: 100px 0;
+            padding: 20px 0;
             position: relative;
         }
 
@@ -665,6 +665,28 @@
             background: var(--primary);
             color: white;
             transform: translateY(-3px);
+        }
+
+        /* Tenaga Pendidik Item yang tersembunyi */
+        .teacher-item.hidden {
+            display: none;
+        }
+
+        .teacher-item.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Footer */
@@ -1049,7 +1071,7 @@
                             <a class="nav-link" href="{{ route('pengumuman') }}">Pengumuman</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="{{ route('profil') }}">Profil</a>
+                            <a class="nav-link active" href="{{ route('profil') }}">Profil Sekolah</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('prestasi') }}">Prestasi</a>
@@ -1160,8 +1182,8 @@
 
     <section class="stats-section">
         <div class="container">
-            <div class="row">
-                <div class="col-md-3 col-12 mb-4">
+            <div class="row mt-3">
+                <div class="col-md-3 col-12 mb-4 lg:mb-0">
                     <div class="stat-card">
                         <div class="stat-icon">
                             <i class="fas fa-building"></i>
@@ -1170,7 +1192,7 @@
                         <div class="stat-text">Fasilitas</div>
                     </div>
                 </div>
-                <div class="col-md-3 col-12 mb-4">
+                <div class="col-md-3 col-12 mb-4 lg:mb-0">
                     <div class="stat-card">
                         <div class="stat-icon">
                             <i class="fas fa-chalkboard-teacher"></i>
@@ -1179,7 +1201,7 @@
                         <div class="stat-text">Guru Berpengalaman</div>
                     </div>
                 </div>
-                <div class="col-md-3 col-12 mb-4">
+                <div class="col-md-3 col-12 mb-4 lg:mb-0">
                     <div class="stat-card">
                         <div class="stat-icon">
                             <i class="fas fa-trophy"></i>
@@ -1188,7 +1210,7 @@
                         <div class="stat-text">Prestasi</div>
                     </div>
                 </div>
-                <div class="col-md-3 col-12 mb-4">
+                <div class="col-md-3 col-12 mb-4 lg:mb-0">
                     <div class="stat-card">
                         <div class="stat-icon">
                             <i class="fas fa-graduation-cap"></i>
@@ -1350,10 +1372,23 @@
                 <div class="col-12">
                     <div class="struktur-container">
                         <h3 class="mb-4">Struktur Organisasi SMK Muhammadiyah 1 Berbek</h3>
-                        <img src="{{ asset('images/profil/struktur.jpg') }}" alt="Struktur Organisasi"
-                            class="struktur-img">
-                        <p class="mt-4">Struktur organisasi yang jelas dan terarah untuk mendukung efektivitas proses
-                            pendidikan dan administrasi sekolah.</p>
+
+                        @if ($struktur)
+                            <img src="{{ $struktur->gambar_struktur_url }}" alt="Struktur Organisasi"
+                                class="struktur-img img-fluid">
+                            <p class="mt-4">Struktur organisasi yang jelas dan terarah untuk mendukung efektivitas
+                                proses
+                                pendidikan dan administrasi sekolah.</p>
+                        @else
+                            <div class="alert alert-info text-center">
+                                <i class="fas fa-info-circle me-2"></i>
+                                Gambar struktur organisasi sedang dalam proses pembaruan.
+                            </div>
+                            <div class="text-center">
+                                <i class="fas fa-sitemap fa-4x text-muted mb-3"></i>
+                                <p class="text-muted">Struktur organisasi akan segera tersedia.</p>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -1368,9 +1403,9 @@
                     <p class="section-subtitle mx-auto">Guru dan staf pengajar yang berkompeten di bidangnya</p>
                 </div>
             </div>
-            <div class="row">
-                @forelse($pengajars as $pengajar)
-                    <div class="col-md-6 col-lg-4 mb-4">
+            <div class="row" id="teachers-container">
+                @forelse($pengajars as $index => $pengajar)
+                    <div class="col-md-6 col-lg-4 mb-4 teacher-item {{ $index >= 6 ? 'hidden' : '' }}">
                         <div class="teacher-card">
                             <img src="{{ $pengajar->foto_pengajar_url }}" class="card-img-top teacher-img"
                                 alt="{{ $pengajar->nama_pengajar }}">
@@ -1389,9 +1424,10 @@
                     </div>
                 @endforelse
             </div>
-            @if ($pengajars->count() > 0)
+            @if ($pengajars->count() > 6)
                 <div class="text-center mt-4">
-                    <a href="#" class="btn btn-primary btn-lg">Lihat Semua Tenaga Pendidik</a>
+                    <button id="lihat-pendidik" class="btn btn-primary btn-lg">Lihat Tenaga Pendidik
+                        Selengkapnya</button>
                 </div>
             @endif
         </div>
@@ -1422,9 +1458,12 @@
                         <li><a href="{{ route('profil') }}"><i class="fas fa-chevron-right"></i> Profil Sekolah</a>
                         </li>
                         <li><a href="{{ route('prestasi') }}"><i class="fas fa-chevron-right"></i> Prestasi</a></li>
-                        <li><a href="{{ route('pengumuman') }}"><i class="fas fa-chevron-right"></i> Pengumuman</a></li>
-                        <li><a href="{{ route('landing-page') }}#jurusan"><i class="fas fa-chevron-right"></i>Program Jurusan</a></li>
-                        <li><a href="{{ route('landing-page') }}#fasilitas"><i class="fas fa-chevron-right"></i>Fasilitas</a></li>
+                        <li><a href="{{ route('pengumuman') }}"><i class="fas fa-chevron-right"></i> Pengumuman</a>
+                        </li>
+                        <li><a href="{{ route('landing-page') }}#jurusan"><i class="fas fa-chevron-right"></i>Program
+                                Jurusan</a></li>
+                        <li><a href="{{ route('landing-page') }}#fasilitas"><i
+                                    class="fas fa-chevron-right"></i>Fasilitas</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-6 mb-5">
@@ -1546,6 +1585,15 @@
 
         window.addEventListener('scroll', animateOnScroll);
         window.addEventListener('load', animateOnScroll);
+
+        document.getElementById('lihat-pendidik')?.addEventListener('click', function() {
+            const hiddenTeachers = document.querySelectorAll('.teacher-item.hidden');
+            hiddenTeachers.forEach(item => {
+                item.classList.remove('hidden');
+                item.classList.add('show');
+            });
+            this.style.display = 'none';
+        });
     </script>
 </body>
 

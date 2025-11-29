@@ -7,6 +7,7 @@ use App\Models\Pengajar;
 use App\Models\Jurusan;
 use App\Models\Fasilitas;
 use App\Models\Prestasi;
+use App\Models\Struktur;
 
 class ProfilController extends Controller
 {
@@ -18,6 +19,8 @@ class ProfilController extends Controller
         $jumlahPrestasi = Prestasi::active()->count();
         $banners = Banner::active()->ordered()->get();
         $pengajars = Pengajar::active()->ordered()->get();
+        $struktur = Struktur::active()->first();
+
         return view('profil', compact(
             'banners',
             'pengajars',
@@ -25,6 +28,7 @@ class ProfilController extends Controller
             'jumlahJurusan',
             'jumlahFasilitas',
             'jumlahPrestasi',
+            'struktur'
         ));
     }
 }

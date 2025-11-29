@@ -110,12 +110,12 @@
                                     <img src="{{ $item->foto_pengumuman_url }}" alt="{{ $item->nama_pengumuman }}">
                                     <div class="pengumuman-overlay">
                                         <div class="action-buttons">
-                                            <button class="btn btn-sm btn-edit" onclick="editPengumuman({{ $item->id }})"
-                                                title="Edit Pengumuman">
+                                            <button class="btn btn-sm btn-edit"
+                                                onclick="editPengumuman({{ $item->id }})" title="Edit Pengumuman">
                                                 <i class="fas fa-edit"></i>
                                             </button>
-                                            <button class="btn btn-sm btn-view" onclick="viewPengumuman({{ $item->id }})"
-                                                title="Lihat Detail">
+                                            <button class="btn btn-sm btn-view"
+                                                onclick="viewPengumuman({{ $item->id }})" title="Lihat Detail">
                                                 <i class="fas fa-eye"></i>
                                             </button>
                                             <button class="btn btn-sm btn-delete"
@@ -204,11 +204,13 @@
                                             <td>
                                                 <div class="action-buttons">
                                                     <button class="btn btn-sm btn-edit"
-                                                        onclick="editPengumuman({{ $item->id }})" title="Edit Pengumuman">
+                                                        onclick="editPengumuman({{ $item->id }})"
+                                                        title="Edit Pengumuman">
                                                         <i class="fas fa-edit"></i>
                                                     </button>
                                                     <button class="btn btn-sm btn-view"
-                                                        onclick="viewPengumuman({{ $item->id }})" title="Lihat Detail">
+                                                        onclick="viewPengumuman({{ $item->id }})"
+                                                        title="Lihat Detail">
                                                         <i class="fas fa-eye"></i>
                                                     </button>
                                                     <button class="btn btn-sm btn-delete"
@@ -273,7 +275,8 @@
                                     <div class="invalid-feedback" id="tambahNamaPengumuman_error"></div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="tambahDeskripsiPengumuman" class="form-label">Deskripsi Pengumuman *</label>
+                                    <label for="tambahDeskripsiPengumuman" class="form-label">Deskripsi Pengumuman
+                                        *</label>
                                     <textarea class="form-control" id="tambahDeskripsiPengumuman" name="deskripsi_pengumuman" rows="4"
                                         placeholder="Masukkan deskripsi pengumuman" required></textarea>
                                     <small class="form-text text-muted">Maksimal 1000 karakter</small>
@@ -360,8 +363,8 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="editNamaPengumuman" class="form-label">Nama Pengumuman *</label>
-                                    <input type="text" class="form-control" id="editNamaPengumuman" name="nama_pengumuman"
-                                        placeholder="Masukkan nama pengumuman" required>
+                                    <input type="text" class="form-control" id="editNamaPengumuman"
+                                        name="nama_pengumuman" placeholder="Masukkan nama pengumuman" required>
                                     <div class="invalid-feedback" id="editNamaPengumuman_error"></div>
                                 </div>
                                 <div class="form-group">
@@ -496,7 +499,7 @@
 
                 initDragAndDrop(tambahUploadWrapper, tambahUploadInput);
             }
-            
+
             const editUploadInput = document.getElementById('editFotoPengumuman');
             const editUploadWrapper = document.getElementById('editUploadWrapper');
             const editImagePreview = document.getElementById('editImagePreview');
@@ -712,7 +715,8 @@
                             timer: 2000,
                             showConfirmButton: false
                         }).then(() => {
-                            bootstrap.Modal.getInstance(document.getElementById('tambahPengumumanModal')).hide();
+                            bootstrap.Modal.getInstance(document.getElementById('tambahPengumumanModal'))
+                        .hide();
                             form.reset();
                             removePreview('tambah');
                             window.location.reload();
@@ -802,7 +806,8 @@
 
                         document.getElementById('viewPengumumanImage').src = pengumuman.foto_pengumuman_url;
                         document.getElementById('viewPengumumanTitle').textContent = pengumuman.nama_pengumuman;
-                        document.getElementById('viewPengumumanDescription').textContent = pengumuman.deskripsi_pengumuman;
+                        document.getElementById('viewPengumumanDescription').textContent = pengumuman
+                            .deskripsi_pengumuman;
                         document.getElementById('viewPengumumanUrutan').textContent = '#' + pengumuman.urutan;
                         document.getElementById('viewPengumumanCreated').textContent = pengumuman.created_at;
                         document.getElementById('viewPengumumanUpdated').textContent = pengumuman.updated_at;

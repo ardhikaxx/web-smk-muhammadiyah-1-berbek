@@ -224,7 +224,8 @@
                                             <td>
                                                 <div class="action-buttons">
                                                     <button class="btn btn-sm btn-edit"
-                                                        onclick="editPrestasi({{ $item->id }})" title="Edit Prestasi">
+                                                        onclick="editPrestasi({{ $item->id }})"
+                                                        title="Edit Prestasi">
                                                         <i class="fas fa-edit"></i>
                                                     </button>
                                                     <button class="btn btn-sm btn-view"
@@ -288,14 +289,14 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="tambahNamaSiswa" class="form-label">Nama Siswa *</label>
-                                    <input type="text" class="form-control" id="tambahNamaSiswa"
-                                        name="nama_siswa" placeholder="Masukkan nama siswa" required>
+                                    <input type="text" class="form-control" id="tambahNamaSiswa" name="nama_siswa"
+                                        placeholder="Masukkan nama siswa" required>
                                     <div class="invalid-feedback" id="tambahNamaSiswa_error"></div>
                                 </div>
                                 <div class="form-group">
                                     <label for="tambahJurusan" class="form-label">Jurusan *</label>
-                                    <input type="text" class="form-control" id="tambahJurusan"
-                                        name="jurusan" placeholder="Masukkan jurusan siswa" required>
+                                    <input type="text" class="form-control" id="tambahJurusan" name="jurusan"
+                                        placeholder="Masukkan jurusan siswa" required>
                                     <div class="invalid-feedback" id="tambahJurusan_error"></div>
                                 </div>
                                 <div class="form-group">
@@ -317,11 +318,8 @@
                                         <div class="form-group">
                                             <label for="tambahTahunPrestasi" class="form-label">Tahun Prestasi *</label>
                                             <input type="number" class="form-control" id="tambahTahunPrestasi"
-                                                name="tahun_prestasi" 
-                                                min="2000" 
-                                                max="{{ date('Y') + 1 }}"
-                                                value="{{ date('Y') }}"
-                                                required>
+                                                name="tahun_prestasi" min="2000" max="{{ date('Y') + 1 }}"
+                                                value="{{ date('Y') }}" required>
                                             <div class="invalid-feedback" id="tambahTahunPrestasi_error"></div>
                                         </div>
                                     </div>
@@ -419,8 +417,8 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="editNamaPrestasi" class="form-label">Nama Prestasi *</label>
-                                    <input type="text" class="form-control" id="editNamaPrestasi" name="nama_prestasi"
-                                        placeholder="Masukkan nama prestasi" required>
+                                    <input type="text" class="form-control" id="editNamaPrestasi"
+                                        name="nama_prestasi" placeholder="Masukkan nama prestasi" required>
                                     <div class="invalid-feedback" id="editNamaPrestasi_error"></div>
                                 </div>
                                 <div class="row">
@@ -436,10 +434,7 @@
                                         <div class="form-group">
                                             <label for="editTahunPrestasi" class="form-label">Tahun Prestasi *</label>
                                             <input type="number" class="form-control" id="editTahunPrestasi"
-                                                name="tahun_prestasi" 
-                                                min="2000" 
-                                                max="{{ date('Y') + 1 }}"
-                                                required>
+                                                name="tahun_prestasi" min="2000" max="{{ date('Y') + 1 }}" required>
                                             <div class="invalid-feedback" id="editTahunPrestasi_error"></div>
                                         </div>
                                     </div>
@@ -581,7 +576,7 @@
 
                 initDragAndDrop(tambahUploadWrapper, tambahUploadInput);
             }
-            
+
             const editUploadInput = document.getElementById('editFotoPrestasi');
             const editUploadWrapper = document.getElementById('editUploadWrapper');
             const editImagePreview = document.getElementById('editImagePreview');
@@ -745,13 +740,16 @@
                     const searchTerm = e.target.value.toLowerCase();
                     const gridCards = document.querySelectorAll('.prestasi-card');
                     const listRows = document.querySelectorAll('.prestasi-list tbody tr');
-                    
+
                     gridCards.forEach(card => {
                         const title = card.querySelector('.prestasi-title').textContent.toLowerCase();
-                        const siswa = card.querySelector('.info-item:nth-child(1) span').textContent.toLowerCase();
-                        const jurusan = card.querySelector('.info-item:nth-child(2) span').textContent.toLowerCase();
+                        const siswa = card.querySelector('.info-item:nth-child(1) span').textContent
+                            .toLowerCase();
+                        const jurusan = card.querySelector('.info-item:nth-child(2) span').textContent
+                            .toLowerCase();
 
-                        if (title.includes(searchTerm) || siswa.includes(searchTerm) || jurusan.includes(searchTerm)) {
+                        if (title.includes(searchTerm) || siswa.includes(searchTerm) || jurusan.includes(
+                                searchTerm)) {
                             card.style.display = '';
                         } else {
                             card.style.display = 'none';
@@ -763,7 +761,8 @@
                         const siswa = row.querySelector('.student-info strong').textContent.toLowerCase();
                         const jurusan = row.querySelector('.student-info small').textContent.toLowerCase();
 
-                        if (title.includes(searchTerm) || siswa.includes(searchTerm) || jurusan.includes(searchTerm)) {
+                        if (title.includes(searchTerm) || siswa.includes(searchTerm) || jurusan.includes(
+                                searchTerm)) {
                             row.style.display = '';
                         } else {
                             row.style.display = 'none';

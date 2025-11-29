@@ -74,7 +74,8 @@
                             </div>
                             <div class="status-item">
                                 <i class="fas fa-user-clock text-primary me-2"></i>
-                                <span>Akun Dibuat Tanggal: {{ \Carbon\Carbon::parse(Auth::guard('admin')->user()->created_at)->setTimezone('Asia/Jakarta')->locale('id')->isoFormat('D MMMM YYYY [pukul] HH.mm') }}</span>
+                                <span>Akun Dibuat Tanggal:
+                                    {{ \Carbon\Carbon::parse(Auth::guard('admin')->user()->created_at)->setTimezone('Asia/Jakarta')->locale('id')->isoFormat('D MMMM YYYY [pukul] HH.mm') }}</span>
                             </div>
                         </div>
                     </div>

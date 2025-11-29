@@ -617,7 +617,7 @@
             .pengumuman-modal .modal-title {
                 font-size: 1.6rem;
             }
-            
+
             .pengumuman-modal .modal-image {
                 height: 300px;
             }
@@ -627,20 +627,20 @@
             .pengumuman-modal .modal-header {
                 padding: 20px 25px 15px;
             }
-            
+
             .pengumuman-modal .modal-body {
                 padding: 0 25px 20px;
             }
-            
+
             .pengumuman-modal .modal-title {
                 font-size: 1.5rem;
             }
-            
+
             .pengumuman-modal .info-grid {
                 grid-template-columns: 1fr;
                 gap: 12px;
             }
-            
+
             .pengumuman-modal .modal-image {
                 height: 280px;
             }
@@ -651,46 +651,46 @@
                 margin: 15px;
                 max-width: calc(100% - 30px);
             }
-            
+
             .pengumuman-modal .modal-header {
                 padding: 20px 20px 15px;
             }
-            
+
             .pengumuman-modal .modal-body {
                 padding: 0 20px 20px;
             }
-            
+
             .pengumuman-modal .modal-title {
                 font-size: 1.4rem;
             }
-            
+
             .pengumuman-modal .btn-close {
                 top: 15px;
                 right: 15px;
                 width: 35px;
                 height: 35px;
             }
-            
+
             .pengumuman-modal .modal-image {
                 height: 220px;
             }
-            
+
             .pengumuman-modal .modal-footer {
                 padding: 15px 20px;
                 flex-direction: column;
                 gap: 15px;
                 align-items: stretch;
             }
-            
+
             .pengumuman-modal .status-indicator {
                 justify-content: center;
             }
-            
+
             .pengumuman-modal .btn-modal {
                 width: 100%;
                 justify-content: center;
             }
-            
+
             .pengumuman-modal .detail-content {
                 max-height: 250px;
                 padding: 15px;
@@ -703,19 +703,19 @@
                 margin: 10px;
                 max-width: calc(100% - 20px);
             }
-            
+
             .pengumuman-modal .modal-header {
                 padding: 15px 15px 10px;
             }
-            
+
             .pengumuman-modal .modal-body {
                 padding: 0 15px 15px;
             }
-            
+
             .pengumuman-modal .modal-title {
                 font-size: 1.3rem;
             }
-            
+
             .pengumuman-modal .btn-close {
                 top: 12px;
                 right: 12px;
@@ -723,28 +723,28 @@
                 height: 32px;
                 font-size: 1rem;
             }
-            
+
             .pengumuman-modal .modal-image {
                 height: 180px;
             }
-            
+
             .pengumuman-modal .info-item {
                 flex-direction: column;
                 text-align: center;
                 gap: 10px;
                 padding: 12px;
             }
-            
+
             .pengumuman-modal .modal-footer {
                 padding: 15px;
             }
-            
+
             .pengumuman-modal .detail-content {
                 max-height: 200px;
                 padding: 12px;
                 font-size: 0.9rem;
             }
-            
+
             .pengumuman-modal .section-title {
                 font-size: 1.2rem;
             }
@@ -754,11 +754,11 @@
             .pengumuman-modal .modal-title {
                 font-size: 1.2rem;
             }
-            
+
             .pengumuman-modal .modal-image {
                 height: 160px;
             }
-            
+
             .pengumuman-modal .modal-subtitle {
                 font-size: 0.85rem;
             }
@@ -1098,7 +1098,7 @@
                             <a class="nav-link active" href="{{ route('pengumuman') }}">Pengumuman</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('profil') }}">Profil</a>
+                            <a class="nav-link" href="{{ route('profil') }}">Profil Sekolah</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('prestasi') }}">Prestasi</a>
@@ -1138,13 +1138,13 @@
                     @foreach ($pengumuman as $item)
                         <div class="col-lg-4 col-md-6 mb-4 pengumuman-item">
                             <div class="pengumuman-card animate__animated animate__fadeInUp"
-                                 data-pengumuman-id="{{ $item->id }}"
-                                 data-pengumuman-nama="{{ $item->nama_pengumuman }}"
-                                 data-pengumuman-deskripsi="{{ $item->deskripsi_pengumuman }}"
-                                 data-pengumuman-foto="{{ $item->foto_pengumuman_url }}"
-                                 data-pengumuman-tanggal="{{ $item->created_at->format('d M Y') }}"
-                                 data-pengumuman-status="{{ $item->status ? 'active' : 'inactive' }}"
-                                 data-pengumuman-urutan="{{ $item->urutan }}">
+                                data-pengumuman-id="{{ $item->id }}"
+                                data-pengumuman-nama="{{ $item->nama_pengumuman }}"
+                                data-pengumuman-deskripsi="{{ $item->deskripsi_pengumuman }}"
+                                data-pengumuman-foto="{{ $item->foto_pengumuman_url }}"
+                                data-pengumuman-tanggal="{{ $item->created_at->format('d M Y') }}"
+                                data-pengumuman-status="{{ $item->status ? 'active' : 'inactive' }}"
+                                data-pengumuman-urutan="{{ $item->urutan }}">
                                 <div class="position-relative overflow-hidden">
                                     <img src="{{ $item->foto_pengumuman_url }}" class="pengumuman-image"
                                         alt="{{ $item->nama_pengumuman }}"
@@ -1185,7 +1185,8 @@
         </div>
     </section>
 
-    <div class="modal fade pengumuman-modal" id="pengumumanModal" tabindex="-1" aria-labelledby="pengumumanModalLabel" aria-hidden="true">
+    <div class="modal fade pengumuman-modal" id="pengumumanModal" tabindex="-1"
+        aria-labelledby="pengumumanModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -1209,7 +1210,7 @@
                             <i class="fas fa-bullhorn me-1"></i> Pengumuman
                         </div>
                     </div>
-                    
+
                     <div class="detail-section">
                         <h3 class="section-title">
                             <i class="fas fa-file-alt"></i>
@@ -1219,7 +1220,7 @@
                             -
                         </div>
                     </div>
-                    
+
                     <div class="info-grid">
                         <div class="info-item">
                             <div class="info-icon">
@@ -1279,9 +1280,12 @@
                         <li><a href="{{ route('profil') }}"><i class="fas fa-chevron-right"></i> Profil Sekolah</a>
                         </li>
                         <li><a href="{{ route('prestasi') }}"><i class="fas fa-chevron-right"></i> Prestasi</a></li>
-                        <li><a href="{{ route('pengumuman') }}"><i class="fas fa-chevron-right"></i> Pengumuman</a></li>
-                        <li><a href="{{ route('landing-page') }}#jurusan"><i class="fas fa-chevron-right"></i>Program Jurusan</a></li>
-                        <li><a href="{{ route('landing-page') }}#fasilitas"><i class="fas fa-chevron-right"></i>Fasilitas</a></li>
+                        <li><a href="{{ route('pengumuman') }}"><i class="fas fa-chevron-right"></i> Pengumuman</a>
+                        </li>
+                        <li><a href="{{ route('landing-page') }}#jurusan"><i class="fas fa-chevron-right"></i>Program
+                                Jurusan</a></li>
+                        <li><a href="{{ route('landing-page') }}#fasilitas"><i
+                                    class="fas fa-chevron-right"></i>Fasilitas</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-6 mb-5">
@@ -1385,7 +1389,7 @@
         document.querySelectorAll('.pengumuman-card').forEach(card => {
             card.addEventListener('click', function() {
                 const modal = new bootstrap.Modal(document.getElementById('pengumumanModal'));
-                
+
                 // Get data from card
                 const namaPengumuman = this.getAttribute('data-pengumuman-nama');
                 const deskripsi = this.getAttribute('data-pengumuman-deskripsi');
@@ -1393,7 +1397,7 @@
                 const tanggal = this.getAttribute('data-pengumuman-tanggal');
                 const status = this.getAttribute('data-pengumuman-status');
                 const urutan = this.getAttribute('data-pengumuman-urutan');
-                
+
                 // Set modal content
                 document.getElementById('pengumumanModalLabel').textContent = namaPengumuman;
                 document.getElementById('modalTanggal').textContent = `Dipublikasikan: ${tanggal}`;
@@ -1402,15 +1406,16 @@
                 document.getElementById('modalImage').alt = namaPengumuman;
                 document.getElementById('modalDeskripsi').textContent = deskripsi;
                 document.getElementById('modalUrutan').textContent = `Prioritas ${urutan}`;
-                
+
                 // Set status
                 const statusElement = document.getElementById('modalStatus');
                 statusElement.className = `status-indicator ${status}`;
-                statusElement.innerHTML = `<i class="fas fa-circle"></i><span>Status: ${status === 'active' ? 'Aktif' : 'Tidak Aktif'}</span>`;
-                
+                statusElement.innerHTML =
+                    `<i class="fas fa-circle"></i><span>Status: ${status === 'active' ? 'Aktif' : 'Tidak Aktif'}</span>`;
+
                 // Show modal
                 modal.show();
-                
+
                 // Add animation to modal elements
                 setTimeout(() => {
                     const modalItems = document.querySelectorAll('.pengumuman-modal .info-item');
@@ -1418,8 +1423,9 @@
                         setTimeout(() => {
                             item.style.opacity = '0';
                             item.style.transform = 'translateY(20px)';
-                            item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                            
+                            item.style.transition =
+                                'opacity 0.5s ease, transform 0.5s ease';
+
                             setTimeout(() => {
                                 item.style.opacity = '1';
                                 item.style.transform = 'translateY(0)';

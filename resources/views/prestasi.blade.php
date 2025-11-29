@@ -949,7 +949,7 @@
                             <a class="nav-link" href="{{ route('pengumuman') }}">Pengumuman</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('profil') }}">Profil</a>
+                            <a class="nav-link" href="{{ route('profil') }}">Profil Sekolah</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" href="{{ route('prestasi') }}">Prestasi</a>
@@ -1152,9 +1152,12 @@
                         <li><a href="{{ route('profil') }}"><i class="fas fa-chevron-right"></i> Profil Sekolah</a>
                         </li>
                         <li><a href="{{ route('prestasi') }}"><i class="fas fa-chevron-right"></i> Prestasi</a></li>
-                        <li><a href="{{ route('pengumuman') }}"><i class="fas fa-chevron-right"></i> Pengumuman</a></li>
-                        <li><a href="{{ route('landing-page') }}#jurusan"><i class="fas fa-chevron-right"></i>Program Jurusan</a></li>
-                        <li><a href="{{ route('landing-page') }}#fasilitas"><i class="fas fa-chevron-right"></i>Fasilitas</a></li>
+                        <li><a href="{{ route('pengumuman') }}"><i class="fas fa-chevron-right"></i> Pengumuman</a>
+                        </li>
+                        <li><a href="{{ route('landing-page') }}#jurusan"><i class="fas fa-chevron-right"></i>Program
+                                Jurusan</a></li>
+                        <li><a href="{{ route('landing-page') }}#fasilitas"><i
+                                    class="fas fa-chevron-right"></i>Fasilitas</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-6 mb-5">

@@ -493,7 +493,7 @@
 
                 initDragAndDrop(tambahUploadWrapper, tambahUploadInput);
             }
-            
+
             const editUploadInput = document.getElementById('editFotoGallery');
             const editUploadWrapper = document.getElementById('editUploadWrapper');
             const editImagePreview = document.getElementById('editImagePreview');

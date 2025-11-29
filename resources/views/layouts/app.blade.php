@@ -90,7 +90,7 @@
                         if (item !== parentItem) {
                             item.classList.remove('active');
                             item.querySelector('.sidebar-dropdown').classList.remove(
-                            'show');
+                                'show');
                             const otherArrow = item.querySelector('.dropdown-arrow');
                             if (otherArrow) {
                                 otherArrow.style.transform = 'rotate(0deg)';
