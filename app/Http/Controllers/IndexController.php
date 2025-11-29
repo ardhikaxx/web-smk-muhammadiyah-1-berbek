@@ -13,6 +13,7 @@ class IndexController extends Controller
 {
     public function index()
     {
+        $jumlahFasilitas = Fasilitas::active()->count();
         $jumlahPengajar = Pengajar::active()->count();
         $jumlahJurusan = Jurusan::active()->count();
         $jumlahPrestasi = Prestasi::active()->count();
@@ -21,6 +22,6 @@ class IndexController extends Controller
         $galleries = Gallery::active()->ordered()->get();
         $jurusan = Jurusan::active()->ordered()->get();
         
-        return view('index', compact('banners', 'fasilitas', 'galleries', 'jurusan', 'jumlahJurusan', 'jumlahPengajar', 'jumlahPrestasi'));
+        return view('index', compact('banners', 'fasilitas', 'galleries', 'jurusan', 'jumlahJurusan', 'jumlahPengajar', 'jumlahPrestasi', 'jumlahFasilitas'));
     }
 }

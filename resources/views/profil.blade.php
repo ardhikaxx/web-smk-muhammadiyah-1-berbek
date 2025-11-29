@@ -1164,19 +1164,10 @@
                 <div class="col-md-3 col-12 mb-4">
                     <div class="stat-card">
                         <div class="stat-icon">
-                            <i class="fas fa-history"></i>
+                            <i class="fas fa-building"></i>
                         </div>
-                        <div class="stat-number">20+</div>
-                        <div class="stat-text">Tahun Berdiri</div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-12 mb-4">
-                    <div class="stat-card">
-                        <div class="stat-icon">
-                            <i class="fas fa-user-graduate"></i>
-                        </div>
-                        <div class="stat-number">850+</div>
-                        <div class="stat-text">Siswa Aktif</div>
+                        <div class="stat-number">{{ $jumlahFasilitas }}+</div>
+                        <div class="stat-text">Fasilitas</div>
                     </div>
                 </div>
                 <div class="col-md-3 col-12 mb-4">
@@ -1185,13 +1176,22 @@
                             <i class="fas fa-chalkboard-teacher"></i>
                         </div>
                         <div class="stat-number">{{ $jumlahPengajar }}+</div>
-                        <div class="stat-text">Tenaga Pendidik</div>
+                        <div class="stat-text">Guru Berpengalaman</div>
                     </div>
                 </div>
                 <div class="col-md-3 col-12 mb-4">
                     <div class="stat-card">
                         <div class="stat-icon">
-                            <i class="fas fa-building"></i>
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div class="stat-number">{{ $jumlahPrestasi }}+</div>
+                        <div class="stat-text">Prestasi</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-12 mb-4">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-graduation-cap"></i>
                         </div>
                         <div class="stat-number">{{ $jumlahJurusan }}</div>
                         <div class="stat-text">Program Jurusan</div>
@@ -1421,12 +1421,10 @@
                         </li>
                         <li><a href="{{ route('profil') }}"><i class="fas fa-chevron-right"></i> Profil Sekolah</a>
                         </li>
-                        <li><a href="{{ route('landing-page') }}#jurusan"><i class="fas fa-chevron-right"></i>
-                                Program Jurusan</a></li>
-                        <li><a href="{{ route('landing-page') }}#fasilitas"><i class="fas fa-chevron-right"></i>
-                                Fasilitas</a></li>
-                        <li><a href="{{ route('landing-page') }}#ppdb"><i class="fas fa-chevron-right"></i> PPDB</a>
-                        </li>
+                        <li><a href="{{ route('prestasi') }}"><i class="fas fa-chevron-right"></i> Prestasi</a></li>
+                        <li><a href="{{ route('pengumuman') }}"><i class="fas fa-chevron-right"></i> Pengumuman</a></li>
+                        <li><a href="{{ route('landing-page') }}#jurusan"><i class="fas fa-chevron-right"></i>Program Jurusan</a></li>
+                        <li><a href="{{ route('landing-page') }}#fasilitas"><i class="fas fa-chevron-right"></i>Fasilitas</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-6 mb-5">

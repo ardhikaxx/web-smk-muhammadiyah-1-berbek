@@ -567,14 +567,14 @@
         }
 
         .jurusan-card .card-title {
-            color: var(--primary);
+            color: var(--primary-dark);
             font-weight: 700;
             font-size: 1.6rem;
             margin-bottom: 10px;
         }
 
         .jurusan-card .card-subtitle {
-            color: var(--secondary);
+            color: var(--primary);
             font-weight: 600;
             margin-bottom: 15px;
             font-size: 1rem;
@@ -1251,10 +1251,10 @@
                 <div class="col-md-3 col-12 mb-4">
                     <div class="stat-card">
                         <div class="stat-icon">
-                            <i class="fas fa-user-graduate"></i>
+                            <i class="fas fa-building"></i>
                         </div>
-                        <div class="stat-number">850+</div>
-                        <div class="stat-text">Siswa Aktif</div>
+                        <div class="stat-number">{{ $jumlahFasilitas }}+</div>
+                        <div class="stat-text">Fasilitas</div>
                     </div>
                 </div>
                 <div class="col-md-3 col-12 mb-4">
@@ -1278,7 +1278,7 @@
                 <div class="col-md-3 col-12 mb-4">
                     <div class="stat-card">
                         <div class="stat-icon">
-                            <i class="fas fa-building"></i>
+                            <i class="fas fa-graduation-cap"></i>
                         </div>
                         <div class="stat-number">{{ $jumlahJurusan }}</div>
                         <div class="stat-text">Program Jurusan</div>

@@ -1280,10 +1280,8 @@
                         </li>
                         <li><a href="{{ route('prestasi') }}"><i class="fas fa-chevron-right"></i> Prestasi</a></li>
                         <li><a href="{{ route('pengumuman') }}"><i class="fas fa-chevron-right"></i> Pengumuman</a></li>
-                        <li><a href="{{ route('landing-page') }}#jurusan"><i class="fas fa-chevron-right"></i>
-                                Program Jurusan</a></li>
-                        <li><a href="{{ route('landing-page') }}#fasilitas"><i class="fas fa-chevron-right"></i>
-                                Fasilitas</a></li>
+                        <li><a href="{{ route('landing-page') }}#jurusan"><i class="fas fa-chevron-right"></i>Program Jurusan</a></li>
+                        <li><a href="{{ route('landing-page') }}#fasilitas"><i class="fas fa-chevron-right"></i>Fasilitas</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-6 mb-5">
