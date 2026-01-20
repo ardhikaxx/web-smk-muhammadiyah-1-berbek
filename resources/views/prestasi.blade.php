@@ -51,6 +51,11 @@
             color: #333;
             overflow-x: hidden;
             background-color: var(--lighter);
+            transition: filter 0.3s ease;
+        }
+
+        body.true-tone-active {
+            filter: sepia(0.3) hue-rotate(-15deg);
         }
 
         h1,
@@ -193,6 +198,81 @@
         .navbar-nav .nav-link:hover::before,
         .navbar-nav .nav-link.active::before {
             width: 30px;
+        }
+
+        .true-tone-btn {
+            background: transparent;
+            border: none;
+            color: var(--dark);
+            font-size: 1.2rem;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            margin-left: 10px;
+            position: relative;
+        }
+
+        .true-tone-btn:hover {
+            background: rgba(0, 102, 204, 0.05);
+            color: var(--primary);
+        }
+
+        .true-tone-btn.active {
+            color: var(--primary);
+            background: rgba(0, 102, 204, 0.1);
+        }
+
+        .true-tone-btn .tooltip-text {
+            visibility: hidden;
+            width: auto;
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            border-radius: 8px;
+            padding: 5px 10px;
+            position: absolute;
+            z-index: 1;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 0.8rem;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .true-tone-btn .tooltip-text::after {
+            content: "";
+            position: absolute;
+            top: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 5px;
+            border-style: solid;
+            border-color: transparent transparent var(--dark) transparent;
+        }
+
+        .true-tone-btn:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        @media (max-width: 991.98px) {
+            .true-tone-btn {
+                margin-left: 0;
+                margin-top: 10px;
+                width: 40px;
+                height: 40px;
+            }
+            
+            .navbar-nav {
+                align-items: center;
+            }
         }
 
         .navbar-toggler {
@@ -963,6 +1043,12 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('landing-page') }}#galeri">Galeri</a>
                         </li>
+                        <li class="nav-item d-flex align-items-center">
+                            <button class="true-tone-btn" id="trueToneToggle" aria-label="Aktifkan True Tone">
+                                <i class="fas fa-adjust"></i>
+                                <span class="tooltip-text">Aktifkan True Tone</span>
+                            </button>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -1361,6 +1447,35 @@
 
         window.addEventListener('scroll', animateOnScroll);
         window.addEventListener('load', animateOnScroll);
+
+        // Fungsi True Tone Filter
+        const trueToneToggle = document.getElementById('trueToneToggle');
+        const tooltipText = trueToneToggle.querySelector('.tooltip-text');
+        const isTrueToneActive = localStorage.getItem('trueToneActive') === 'true';
+        
+        if (isTrueToneActive) {
+            document.body.classList.add('true-tone-active');
+            trueToneToggle.classList.add('active');
+            trueToneToggle.innerHTML = '<i class="fas fa-adjust"></i><span class="tooltip-text">Nonaktifkan True Tone</span>';
+        }
+
+        trueToneToggle.addEventListener('click', function() {
+            const isActive = document.body.classList.toggle('true-tone-active');
+            this.classList.toggle('active');
+            
+            if (isActive) {
+                this.innerHTML = '<i class="fas fa-adjust"></i><span class="tooltip-text">Nonaktifkan True Tone</span>';
+                localStorage.setItem('trueToneActive', 'true');
+            } else {
+                this.innerHTML = '<i class="fas fa-adjust"></i><span class="tooltip-text">Aktifkan True Tone</span>';
+                localStorage.setItem('trueToneActive', 'false');
+            }
+        });
+
+        trueToneToggle.addEventListener('mouseenter', function() {
+            const isActive = document.body.classList.contains('true-tone-active');
+            tooltipText.textContent = isActive ? 'Nonaktifkan True Tone' : 'Aktifkan True Tone';
+        });
     </script>
 </body>
 
